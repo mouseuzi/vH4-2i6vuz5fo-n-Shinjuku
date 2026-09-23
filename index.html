@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="行程表 - 新宿版">
+<meta property="og:title" content="行程表-新宿版">
 <meta property="og:description" content="時間、地點與營業時間整理">
 <meta name="twitter:card" content="summary">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>行程表 - 新宿版</title>
+<title>行程表-新宿版</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
@@ -99,7 +99,7 @@ a{color:inherit}
   margin:0 -1.15rem;padding:.5rem 1.15rem;
 }
 .bar-inner{max-width:60rem;margin:0 auto;display:flex;gap:.6rem;align-items:center}
-.daynav{display:flex;flex-wrap:wrap;gap:.35rem;flex:1;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.daynav{display:flex;gap:.35rem;overflow-x:auto;flex:1;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
 .daynav a{
   flex:0 0 auto;text-decoration:none;font-size:.82rem;font-weight:500;
   padding:.3rem .62rem;border:1px solid var(--rule);border-radius:999px;
@@ -175,6 +175,12 @@ a{color:inherit}
 .unk{color:var(--amber)}
 .shut{color:var(--d1)}
 
+@media (max-width:560px){
+  .tl li{grid-template-columns:3.5rem 1.1rem 1fr}
+  .tl .time{font-size:.8rem}
+  .card{margin-left:.3rem;padding:.7rem .8rem .75rem}
+}
+
 /* ---------- 表格 ---------- */
 .scroller{overflow-x:auto;border:1px solid var(--rule);background:var(--surface);margin:1rem 0}
 table{border-collapse:collapse;width:100%;min-width:40rem;font-size:.85rem}
@@ -194,19 +200,6 @@ td.c{text-align:center;white-space:nowrap}
 .card p.load{
   color:var(--amber);border-left:2px solid var(--amber);padding-left:.6rem;
 }
-.card p.key{
-  background:var(--warn-bg);color:var(--warn-ink);font-weight:700;
-  border:1px solid var(--amber);border-left:5px solid var(--amber);
-  padding:.6rem .85rem;margin-top:.55rem;font-size:.92rem;
-}
-.card p.key b{color:inherit}
-.card ol.opts{
-  margin:.4rem 0 0;padding-left:1.4rem;max-width:44rem;
-  font-size:.89rem;color:var(--ink-soft);
-}
-.card ol.opts li{display:list-item;margin:.35rem 0;padding:0}
-.card ol.opts li b{color:var(--ink);font-weight:700}
-.card ol.opts li::marker{color:var(--accent);font-weight:700}
 .lv0,.lv1,.lv2,.lv3{
   display:inline-block;font-size:.74rem;line-height:1.5;padding:0 .42rem;
   border-radius:2px;vertical-align:.08em;white-space:nowrap;font-weight:500;
@@ -215,8 +208,7 @@ td.c{text-align:center;white-space:nowrap}
 .lv1{background:var(--warn-bg);color:var(--warn-ink)}
 .lv2{background:var(--warn-bg);color:var(--warn-ink);box-shadow:inset 0 0 0 1px currentColor}
 .lv3{background:var(--amber);color:var(--surface)}
-.tblnote{font-size:.8rem;color:var(--ink-soft);margin:-.4rem 0 1.4rem;max-width:44rem;line-height:1.9}
-.tblnote b{color:var(--ink);font-weight:500}
+.tblnote{font-size:.8rem;color:var(--ink-soft);margin:-.4rem 0 1.4rem;max-width:44rem}
 .block{margin:3rem 0 0;border-top:1px solid var(--rule);padding-top:1.2rem}
 .block h2{font-size:1.2rem;margin-bottom:.5rem}
 .block p{color:var(--ink-soft);font-size:.9rem;max-width:44rem}
@@ -226,133 +218,44 @@ td.c{text-align:center;white-space:nowrap}
 
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:var(--ink-faint);font-size:.8rem}
 
-/* ================= 手機版 ================= */
-@media (max-width:640px){
-  /* --- 版面基準 --- */
-  .wrap{padding:0 1rem 4rem}
-  .bar{margin:0 -1rem;padding:.45rem 1rem}
-  body{font-size:16px}
-  .daynav{flex-wrap:nowrap;overflow-x:auto}
-
-  /* --- 出發看板 --- */
-  .board{margin:1rem 0 1.25rem}
-  .board-top{padding:1rem 1rem .8rem;gap:.5rem}
-  .flight{padding:.8rem 1rem}
-
-  /* --- 日標題 --- */
-  .day{margin-top:2.2rem}
-  .day-head h2{font-size:1.18rem;line-height:1.45}
-  .day-head .meta span{display:inline-block;margin:0 .9rem .1rem 0}
-
-  /* --- 面板 --- */
-  .panel{font-size:.9rem;padding:.8rem .9rem}
-  .load-panel{font-size:.9rem;padding:.85rem .9rem}
-
-  /* --- 時間軸：改成單欄堆疊，時間在卡片上方 --- */
-  .tl li{display:block;position:relative;padding:0 0 0 .95rem;align-items:initial}
-  .tl li::after{
-    content:"";position:absolute;left:0;top:0;bottom:0;
-    width:1px;background:var(--rule);
-  }
-  .tl li:first-child::after{top:1.29rem}
-  .tl li:last-child::after{bottom:auto;height:1.29rem}
-  .tl li:first-child .rail,
-  .tl li:last-child .rail,
-  .tl .rail{display:none}
-
-  .tl .time{
-    position:relative;padding:.85rem 0 0;
-    font-size:.82rem;letter-spacing:.05em;color:var(--accent);
-  }
-  .tl .time::before{
-    content:"";position:absolute;
-    left:calc(-.95rem - 4.5px);top:1.29rem;
-    width:9px;height:9px;border-radius:50%;
-    background:var(--surface);border:2px solid var(--accent);
-  }
-  .tl li.move .time{color:var(--ink-faint);font-weight:500}
-  .tl li.move .time::before{
-    left:calc(-.95rem - 2.5px);top:1.41rem;
-    width:5px;height:5px;background:var(--rule);border:0;
-  }
-
-  /* --- 卡片：取得全寬 --- */
-  .card{margin:.3rem 0 .55rem;padding:.8rem .85rem .85rem}
-  .card h3{font-size:1.04rem}
-  .card p{font-size:.92rem;max-width:none}
-  .card .biz{font-size:.86rem;line-height:1.9}
-  .card p.key{font-size:.93rem;padding:.65rem .8rem}
-  .card ol.opts{font-size:.92rem;max-width:none}
-  .move .leg{
-    margin:.1rem 0 .55rem;padding:.15rem 0;
-    font-size:.88rem;line-height:1.85;
-  }
-
-  /* --- 表格：改成一列一張卡片（.keep-table 除外，見下） --- */
-  .scroller:not(.keep-table){
-    overflow-x:visible;border:0;background:transparent;margin:.9rem 0 1.1rem;
-  }
-  .scroller:not(.keep-table) table{display:block;min-width:0;font-size:.9rem}
-  .scroller:not(.keep-table) thead{display:none}
-  .scroller:not(.keep-table) tbody{display:block}
-  .scroller:not(.keep-table) tbody tr{
-    display:block;background:var(--surface);
-    border:1px solid var(--rule-soft);box-shadow:var(--shadow);
-    margin-bottom:.5rem;padding:.7rem .85rem;
-  }
-  .scroller:not(.keep-table) tbody tr:last-child{margin-bottom:0}
-  .scroller:not(.keep-table) tbody td,
-  .scroller:not(.keep-table) tbody tr:last-child td{
-    display:block;border:0;padding:.2rem 0;
-    text-align:left;line-height:1.8;
-  }
-  .scroller:not(.keep-table) tbody td::before{
-    content:attr(data-label);
-    color:var(--ink-faint);font-size:.78rem;
-    margin-right:.55rem;font-weight:400;
-  }
-  /* 第一欄當卡片標題 */
-  .scroller:not(.keep-table) tbody td:first-child{
-    display:block;font-weight:700;color:var(--ink);
-    font-size:1rem;line-height:1.5;
-    margin:0 0 .35rem;padding:0 0 .35rem;
-    border-bottom:1px solid var(--rule-soft);
-  }
-  .scroller:not(.keep-table) tbody td:first-child::before{display:none}
-  /* 短欄位（日期、時段、○✕）併成橫排小標籤 */
-  .scroller:not(.keep-table) tbody td.c{
-    display:inline-block;width:auto;white-space:nowrap;text-align:left;
-    margin:.22rem .35rem .22rem 0;padding:.12rem .5rem;
-    background:var(--surface-2);border-radius:3px;font-size:.85rem;
-    line-height:1.7;vertical-align:top;
-  }
-  .scroller:not(.keep-table) tbody td.c::before{font-size:.74rem;margin-right:.35rem}
-
-  /* --- 巴士時刻表：維持真正的表格，左右滑動比對 --- */
-  .keep-table{margin:.9rem 0 .6rem;-webkit-overflow-scrolling:touch}
-  .keep-table table{min-width:27rem;font-size:.86rem}
-  .keep-table th,.keep-table td{padding:.45rem .55rem}
-  .keep-table thead th{white-space:nowrap}
-  .keep-table + .tblnote::before{
-    content:"表格可左右滑動";
-    display:block;color:var(--ink-faint);font-size:.78rem;
-    margin-bottom:.4rem;
-  }
-
-  .tblnote{font-size:.86rem;line-height:1.95;margin:0 0 1.3rem}
-
-  /* --- 區塊 --- */
-  .block{margin-top:2.4rem}
-  .block h2{font-size:1.15rem}
-  .block p,.block ul{font-size:.93rem;max-width:none}
-  .block ul{padding-left:1.15rem}
-  .block li{margin:.45rem 0}
+/* ---------- 導覽列可換行（桌機） ---------- */
+@media (min-width:721px){
+  .bar-inner{align-items:flex-start}
+  .daynav{flex-wrap:wrap;overflow:visible}
 }
-
-@media (max-width:400px){
-  .card{padding:.75rem .75rem .8rem}
-  .scroller:not(.keep-table) tbody tr{padding:.65rem .75rem}
-  .scroller:not(.keep-table) tbody td.c{font-size:.82rem;padding:.1rem .42rem}
+/* ---------- 手機：時間軸單欄堆疊 ---------- */
+@media (max-width:560px){
+  .tl li{display:block;position:relative;padding-left:0}
+  .tl .rail{display:none}
+  .tl .time{
+    padding:0 0 .2rem;font-size:.92rem;letter-spacing:.04em;
+    color:var(--accent);font-weight:700;
+    border-top:2px solid var(--accent);padding-top:.5rem;margin-top:.9rem;
+  }
+  .tl li.move .time{color:var(--ink-soft);border-top:1px dashed var(--rule)}
+  .card{margin:.25rem 0 0;padding:.75rem .85rem .8rem}
+  .move .leg{margin:.2rem 0 0;padding:.2rem 0 .2rem .5rem;border-left:2px solid var(--rule)}
+}
+/* ---------- 手機：表格改成一列一卡 ---------- */
+@media (max-width:560px){
+  .scroller:not(.keep-table){border:0;background:transparent;overflow:visible}
+  .scroller:not(.keep-table) table{min-width:0;width:100%;font-size:.86rem}
+  .scroller:not(.keep-table) thead{display:none}
+  .scroller:not(.keep-table) tbody,
+  .scroller:not(.keep-table) tr,
+  .scroller:not(.keep-table) td{display:block;width:100%}
+  .scroller:not(.keep-table) tr{
+    background:var(--surface);border:1px solid var(--rule-soft);
+    margin:0 0 .6rem;padding:.55rem .7rem;
+  }
+  .scroller:not(.keep-table) td{border:0;padding:.18rem 0}
+  .scroller:not(.keep-table) td::before{
+    content:attr(data-label);display:block;
+    font-size:.7rem;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:.05rem;
+  }
+  .scroller:not(.keep-table) td[data-label=""]::before{display:none}
+  .scroller:not(.keep-table) td.c{text-align:left}
+  .scroller.keep-table{overflow-x:auto}
 }
 </style>
 </head>
@@ -389,10 +292,10 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <a href="#d3"><b>19</b> 六 · 日本橋銀座</a>
         <a href="#d4"><b>20</b> 日 · 神宮澀谷</a>
         <a href="#d5"><b>21</b> 一 · 返程</a>
-        <a href="#gifts">伴手禮</a>
-        <a href="#extra">待決定</a>
-        <a href="#check">行前確認</a>
-        <a href="#todo">行前準備</a>
+        <a href="#shopping">採買</a>
+        <a href="#confirm">行前確認</a>
+        <a href="#prep">行前準備</a>
+        <a href="#closures">公休</a>
       </nav>
       <div class="theme" role="group" aria-label="色彩模式">
         <button type="button" data-mode="system" aria-pressed="true">系統</button>
@@ -416,7 +319,8 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
       <div class="panel traffic">
         <h4>交通重點</h4>
         <p>長榮在成田<b>第一航廈南翼</b>，出關後在 1F 入境大廳找「Limousine Bus」櫃台或自動售票機買票，成田 T1 ⇄ 迪士尼度假區線大人 ¥2,900。</p>
-        <p>巴士採座位定員制，抓 13:30–14:00 的班次。若客滿，備案走 JR：成田空港 → 東京 → 京葉線 → 舞濱，約 80 分。</p>
+        <p><b>班距只有 1 小時 1–2 班</b>，12:00 落地實際上是搭 <b>14:10</b> 那班（13:10 那班出關來不及）。<b>2026/10/1 已改點，出發前務必重查官網時刻。</b></p>
+        <p>若客滿或想搶時間，備案走 JR：成田空港 →（N&#39;EX 約 60 分）→ 東京 →（京葉線 17 分）→ 舞濱，約 95 分含東京站內步行。時間跟等巴士差不多，但要拖行李走長地下通道。</p>
         <p><b>樂園大飯店本身就是巴士停靠站</b>，直接在飯店門口下車，不必再轉度假區線。飯店到樂園入園口步行 1 分鐘。</p>
       </div>
       <div class="panel rain">
@@ -427,38 +331,46 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
     </div>
 
     <ol class="tl">
-      <li>
+            <li>
         <div class="time">12:00</div><div class="rail"></div>
         <div><div class="card">
           <h3>抵達成田機場 T1</h3>
-          <div class="dur">入境＋提領行李 約 60–75 分</div>
-          <p>先做三件事：拿行李、買利木津車票、買（或確認）飲用水與零食。機場 4F 有餐廳街，若想在車上補充體力可先買。</p>
+          <div class="dur">入境、提領行李、過海關　·　<b>抓 2 小時</b></div>
+          <p>下機 → 走到入境審查 → 排隊 → 等行李 → 海關，到走出入境大廳，<b>正常抓 2 小時</b>。12 月中旬的平日中午不是成田最尖峰的時段，但行李這一段沒得催。</p>
+          <p>出關後在 1F 入境大廳找<b>利木津巴士售票櫃台或自動售票機</b>買票，大人 ¥2,900。<b>乘車處是第 1 航廈 10 號乘車處。</b></p>
           <div class="biz"><b>長榮 成田航廈：</b>第一航廈 南翼　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">13:30</div><div class="rail"></div>
-        <div class="leg"><span class="line">利木津巴士　成田 T1 → 東京迪士尼度假區</span>　約 70–90 分　·　¥2,900／人　·　停靠樂園、大使飯店、海洋、米拉可斯達、樂園大飯店、玩具總動員飯店等</div>
+        <div class="time">14:10</div><div class="rail"></div>
+        <div class="leg">
+          <span class="line">利木津巴士　成田 T1（10 號乘車處）→ 東京迪士尼樂園大飯店</span>　約 70–90 分　·　<b>¥2,900／人</b><br>
+          <b>班距只有 1 小時 1–2 班</b>，中午時段大致是 12:30 / 13:10 / 14:10 / 15:00（<span class="tag unk">2025 年版時刻，僅供參考</span>）。<b>12:00 落地趕不上 13:10 那班</b>，所以實際上就是搭 14:10。<br>
+          <b>⚠ 2026/10/1 已實施改點，上面的時刻到你出發時已不適用，出發前務必重查官網。</b><br>
+          <b>不要預先鎖定班次</b>，出關後直接買下一班就好。空港發的班次是否接受預約，不同來源說法不一<span class="tag unk">未查證</span>
+        </div>
       </li>
-      <li>
-        <div class="time">15:00</div><div class="rail"></div>
+<li>
+        <div class="time">15:30</div><div class="rail"></div>
         <div><div class="card">
           <h3>東京迪士尼樂園大飯店　Check-in ／<b>一次買齊兩天門票</b></h3>
           <div class="dur">停留 35 分</div>
-          <p class="key">在 3F Reception 把 12/17 樂園、12/18 海洋<b>四張票一次買完</b>，不要留到明天早上。</p>
+          <p><b>這一站是今天的關鍵。</b>在 3F Reception 把 12/17 樂園、12/18 海洋<b>四張票一次買完</b>，不要留到明天早上。理由見右方說明。</p>
+          <p>官方明訂：迪士尼飯店住客可購買入住期間的門票，<b>就算官網已售罄，飯店仍保證買得到，兩個園都可選、不會賣完</b>，也不需事先預約。可掛房帳、退房時一起結算。</p>
           <p>一人一日限購 1 張（僅 1 日護照），一張票一天只能進一個園。Check-in 前、退房後當天都能買。</p>
           <div class="biz"><b>售票處：</b>3F Reception　<b>時間：</b>6:00–22:00　·　<b>可購買期間：</b>入住日 ~ 退房日　·　可用現金／信用卡／掛房帳　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">15:35</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　樂園大飯店 → 東京迪士尼樂園入園口</span>　約 1 分。這是全度假區離樂園入口最近的飯店，不需要搭度假區線。</div>
+        <div class="time">16:05</div><div class="rail"></div>
+        <div class="leg"><span class="line">步行　樂園大飯店 → 東京迪士尼樂園入園口</span>　約 1 分。這是全度假區離樂園入口最近的飯店，不需要搭度假區線，省下約 20 分與 ¥300／人</div>
       </li>
       <li>
-        <div class="time">15:40</div><div class="rail"></div>
+        <div class="time">16:10</div><div class="rail"></div>
         <div><div class="card">
           <h3>東京迪士尼樂園</h3>
-          <div class="dur">停留 5 小時 20 分（含園內晚餐）</div>
+          <div class="dur">停留 4 小時 50 分（含園內晚餐）</div>
+          <p>只剩半天，建議策略：進場先直衝 1–2 個一定要玩的設施，其餘時間留給聖誕限定裝飾、遊行與商店。行程已固定，這裡不做更動。</p>
           <p>Disney Christmas 檔期 2026/11/11–12/25，整個造訪期間都在活動內。</p>
           <div class="biz"><b>營業：</b>9:00–21:00　·　<b>1日護照：</b>大人 ¥10,900　·　全年無休　<span class="tag ok">已查證</span></div>
         </div></div>
@@ -496,21 +408,21 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
       <div class="idx">第 2 天</div>
       <h2>12/18（五）東京迪士尼海洋 → 新宿</h2>
       <div class="meta">
-        <span>宿：新宿格蘭貝爾</span><span>步行量 高</span><span>主要移動：高速巴士 新宿–TDR 線</span>
+        <span>宿：新宿格蘭貝爾</span><span>步行量 高</span><span><b>採方案 B（提早離園）</b></span>
       </div>
     </div>
 
     <div class="panels">
       <div class="panel traffic">
         <h4>交通重點</h4>
-        <p><b>改用高速巴士，不搭電車。</b>京成巴士東京與 JR 巴士關東共同營運的「新宿–TDR」線，迪士尼樂園巴士總站 East 1 號乘車處直達巴士總站新宿，約 50 分、大人 ¥1,000。行李進行李艙，零轉乘、零樓梯。</p>
-        <p>樂園大飯店就在樂園入口正對面，走到巴士總站 East 很近，這條動線剛好卡在飯店旁邊。</p>
-        <p><b>不能預約，先到先上車。</b>週五傍晚人多，請提早 15–20 分到乘車處排隊。班距約 30–40 分，最壞就是等下一班。</p>
-        <p><b>Happy Entry 今天用不到。</b>樂園大飯店住客的提早入園特典對象園區只有迪士尼樂園，海洋僅限米拉可斯達與幻想泉飯店住客。請照一般時間排隊。</p>
+        <p><b>本日採方案 B：15:20 離園，搭樂園 16:20 的高速巴士。</b>京成巴士東京與 JR 巴士關東共同營運的「新宿–TDR」線，迪士尼樂園巴士總站 East 1 號乘車處直達巴士總站新宿，約 50 分、大人 ¥1,000。行李進行李艙，零轉乘、零樓梯。</p>
+        <p>要搭 16:20 那班，往前推：<b>15:20 離園 → 15:40 拿完行李 → 16:05 到乘車處排隊</b>。樂園大飯店就在樂園入口正對面，走到巴士總站 East 很近。</p>
+        <p><b>不能預約，先到先上車。</b>提早 15–20 分到乘車處排隊。班距約 30–40 分，最壞就是等下一班（17:20）。</p>
+        <p><b>Happy Entry 今天用不到。</b>樂園大飯店住客的提早入園特典對象園區只有迪士尼樂園，海洋僅限米拉可斯達與幻想泉飯店住客。</p>
       </div>
       <div class="panel rain">
         <h4>雨天備案</h4>
-        <p>海洋的室內比例比樂園低，雨天體感會差很多。若下大雨，就再往前提早離園，把時間換到新宿地下街：新宿地下道 → LUMINE → 京王モール → 新宿 Subnade 幾乎全程不淋雨。</p>
+        <p>海洋的室內比例比樂園低。雨大就更早離園，把時間換到新宿地下街：新宿地下道 → LUMINE → 京王モール → 新宿 Subnade 幾乎全程不淋雨。</p>
         <p>巴士停駛時的備案是電車（見下方「備案：電車路線」）。</p>
       </div>
     </div>
@@ -519,21 +431,16 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
       <table>
         <thead><tr><th>迪士尼海洋 發</th><th>迪士尼樂園 發</th><th>巴士總站新宿 到</th><th>備註</th></tr></thead>
         <tbody>
-          <tr><td data-label="迪士尼海洋 發">16:10</td><td data-label="迪士尼樂園 發">16:20</td><td data-label="巴士總站新宿 到">17:10</td><td data-label="備註"><b>主方案</b> 搭這班</td></tr>
-          <tr><td data-label="迪士尼海洋 發">17:10</td><td data-label="迪士尼樂園 發">17:20</td><td data-label="巴士總站新宿 到">18:10</td><td data-label="備註">主方案的備援班次</td></tr>
-          <tr><td data-label="迪士尼海洋 發">17:40</td><td data-label="迪士尼樂園 發">17:50</td><td data-label="巴士總站新宿 到">18:40</td><td data-label="備註"><b>備案 A</b>（17:00 離園）搭這班</td></tr>
-          <tr><td data-label="迪士尼海洋 發">18:10</td><td data-label="迪士尼樂園 發">18:20</td><td data-label="巴士總站新宿 到">19:10</td><td data-label="備註">順延一班</td></tr>
-          <tr><td data-label="迪士尼海洋 發">18:45</td><td data-label="迪士尼樂園 發">18:55</td><td data-label="巴士總站新宿 到">19:45</td><td data-label="備註">順延兩班</td></tr>
-          <tr><td data-label="迪士尼海洋 發">19:10</td><td data-label="迪士尼樂園 發">19:20</td><td data-label="巴士總站新宿 到">20:10</td><td data-label="備註">—</td></tr>
+          <tr><td>16:10</td><td>16:20</td><td>17:10</td><td><b>今天搭這班</b></td></tr>
+          <tr><td>17:10</td><td>17:20</td><td>18:10</td><td>順延一班</td></tr>
+          <tr><td>17:40</td><td>17:50</td><td>18:40</td><td>方案 A 原本搭這班</td></tr>
+          <tr><td>18:10</td><td>18:20</td><td>19:10</td><td>—</td></tr>
+          <tr><td>18:45</td><td>18:55</td><td>19:45</td><td>—</td></tr>
+          <tr><td>19:10</td><td>19:20</td><td>20:10</td><td>—</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tblnote">
-      <b>票價</b>　大人 ¥1,000／兒童 ¥500　·　實車距離 28.60 km<br>
-      <b>乘車處</b>　迪士尼樂園＝巴士總站 East 1 號　·　迪士尼海洋＝巴士總站 North 3 號　·　新宿端＝巴士總站新宿 4F<br>
-      <b>付款</b>　從迪士尼上車時在車內付，現金／Suica・PASMO／信用卡感應皆可<br>
-      <b>預約</b>　不接受預約，先到先上車<span class="tag ok">時刻與票價已查證（2025/06/01 改點）</span>
-    </p>
+    <p class="tblnote">票價大人 ¥1,000／兒童 ¥500，實車距離 28.60 km。乘車處：迪士尼樂園＝巴士總站 East 1 號、迪士尼海洋＝巴士總站 North 3 號；新宿端為巴士總站新宿 4F。從迪士尼上車時在車內付現金、Suica／PASMO 或信用卡感應皆可，不接受預約。<span class="tag ok">時刻與票價已查證（2025/06/01 改點）</span></p>
 
     <ol class="tl">
       <li>
@@ -541,45 +448,30 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div><div class="card">
           <h3>早餐、退房、寄放行李</h3>
           <div class="dur">約 60 分</div>
-          <p>行李寄在樂園大飯店，傍晚回來取。門票昨天已在 3F Reception 買好，今天不用再排售票。若昨天沒買，Reception 6:00 開始售票，請預留排隊時間。</p>
-          <p class="key">這段時間要同時解決早餐、退房、寄行李，<b>不要在飯店餐廳慢慢吃</b>。</p>
-          <p><b>退房不是只能在房內線上辦，兩條路都可以。</b>房內電視可直接做 Express Checkout（掃電視上的 QR 碼、用信用卡結帳），不必經過櫃台；也可以到 3F Reception 照一般方式辦。<b>但若用非信用卡方式付款、或需要收據，官方明訂一定要到櫃台。</b></p>
-          <p><b>Reception 與 Bell Desk 都在 3F，走到櫃台不算繞路。</b>既然寄行李本來就得去 Bell Desk，兩邊只差幾步。建議：整理行李時順手在房內電視把 Express Checkout 做完（不佔額外時間），下樓只排 Bell Desk 一次；萬一線上結帳卡住或臨時要收據，Reception 就在同一層。</p>
-          <p><b>早餐三選一：</b></p>
-          <ol class="opts">
-            <li><b>前一晚先買好，早上在房間吃（推薦）。</b>最省時，7:40 就能出門。飯店 1F Looking Glass Gifts 6:00–24:00，或 12/17 離園前在園內買。</li>
-            <li><b>6:30 一開門就進 Sherwood Garden 自助餐。</b>吃 30 分鐘、7:10 離場，還剩 45 分處理退房與行李。代價是要更早起，成人約 ¥3,900。</li>
-            <li><b>07:00 出門，在 Resort Gateway 旁的 New Days 舞浜買。</b>6:30 開門，完全順路不繞路，邊走邊吃。</li>
-          </ol>
-          <div class="biz"><b>Sherwood Garden：</b>早餐 6:30–10:00、298 席　·　<b>Dreamers Lounge：</b>早餐 6:30–9:30、77 席（小店，尖峰易排隊）　·　<b>Reception 與 Bell Desk 同在 3F</b>（Reception 6:00–22:00）　·　自助早餐成人約 ¥3,900（依期間調整）　·　最近的 24 小時超商在舞浜站北口步行 10 分　<span class="tag ok">已查證</span></div>
+          <p>行李寄在樂園大飯店，下午回來取。門票昨天已在 3F Reception 買好，今天不用再排售票。</p>
         </div></div>
       </li>
       <li class="move">
         <div class="time">07:55</div><div class="rail"></div>
-        <div class="leg">
-          <span class="line">迪士尼度假區線　Resort Gateway Station → 東京迪士尼海洋站</span>　單向環狀，經樂園站、Bayside 站，<b>3 站、車程 9 分</b>（3.7 km）　·　¥300／人（兒童 ¥150）　·　班距 4–13 分，首班車 6:03，一圈約 13 分<span class="tag ok">車程與票價已查證</span><br>
-          <b>時程：</b>07:42 離開飯店 → 步行 3 分 → 07:45 到站，<b>買票抓 10 分</b> → 07:55 發車 → 08:04 抵達海洋站<span class="tag unk">步行 3 分與買票 10 分為估計值</span><br>
-          用 <b>Suica／PASMO 感應進站可省下買票的 10 分</b>，那樣 07:52 出門也趕得上
-        </div>
+        <div class="leg"><span class="line">迪士尼度假區線　Resort Gateway Station → 東京迪士尼海洋站</span>　單向環狀，經樂園站、Bayside 站，<b>約 9 分</b>　·　¥300／人。飯店旁就是 Resort Gateway 站，走過去約 3 分<br>班距 4–13 分、繞一圈約 13 分、始發約 6 時台<span class="tag ok">已查證</span></div>
       </li>
       <li>
         <div class="time">08:30</div><div class="rail"></div>
         <div><div class="card">
           <h3>東京迪士尼海洋</h3>
-          <div class="dur">停留 6 小時 50 分（08:30–15:20）　·　備案 A 為 8 小時 30 分</div>
-          <p>官方開園 9:00，實務上常提早開閘。</p>
-          <p>期間有迪士尼海洋 25 週年「Sparkling Jubilee」與 Disney Christmas 兩檔活動同時進行。</p>
+          <div class="dur">停留約 6 小時 20 分（含園內午餐）</div>
+          <p>官方開園 9:00，實務上常提早開閘，8:30 到入口排隊是合理的。</p>
+          <p>期間有迪士尼海洋 25 週年「Sparkling Jubilee」與 Disney Christmas 兩檔活動同時進行。<b>方案 B 下 15:20 就要往出口走，看不到入夜後的點燈</b>，白天的重點設施請優先排。</p>
           <div class="biz"><b>營業：</b>9:00–21:00　·　<b>1日護照：</b>大人 ¥10,900　·　全年無休　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li>
         <div class="time">15:20</div><div class="rail"></div>
         <div><div class="card">
-          <h3>離園，搭 16:20 班次回新宿</h3>
-          <div class="dur">17:10 到新宿　·　17:20 進飯店</div>
-          <p class="key">這一段沒有緩衝：<b>15:20 一定要離園</b>。錯過 16:20 那班只能等 17:20，晚上整個往後推一小時。</p>
-          <p>12 月日落約 16:30。晚上的配置：旗艦店 90 分 ＋ BIC CAMERA 60 分 ＋ 晚餐與唐吉訶德。</p>
-          <p><b>時程：</b>15:20 離園 → 度假區線 海洋站 → Resort Gateway（1 站，約 5 分）→ 15:40 飯店取行李（Bell Desk 3F）→ 步行至巴士總站 East（約 5–8 分）<span class="tag unk">步行時間未查證</span> → 16:05 到乘車處排隊 → 16:20 發車 → 17:10 抵達巴士總站新宿。</p>
+          <h3>離園 → 回飯店取行李</h3>
+          <div class="dur">約 45 分</div>
+          <p>15:20 往出口走 → 度假區線 海洋站 → Resort Gateway（<b>最後一段，約 3 分</b>）→ 15:40 起在飯店取行李、整理 → 16:05 前抵達巴士總站 East 排隊。</p>
+          <p class="load"><b>這一段沒有緩衝。</b>15:20 是為了 16:20 那班車往回推的死線，園內最後一個設施請抓 15:00 前結束。</p>
         </div></div>
       </li>
       <li class="move">
@@ -587,7 +479,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div class="leg">
           <span class="line">高速巴士「新宿–TDR」　東京迪士尼樂園 巴士總站 East 1 號乘車處 → 巴士總站新宿 4F</span><br>
           直達不換車　·　約 50 分　·　<b>¥1,000／人</b>　·　行李放行李艙，車內付現金／Suica／信用卡感應<br>
-          <b>提早 15–20 分排隊</b>（16:05 到乘車處）。搭不上就等 17:20 那班，到新宿變 18:10
+          <b>提早 15–20 分排隊</b>（16:05 到乘車處）。搭不上就等 17:20 那班
         </div>
       </li>
       <li class="move">
@@ -599,62 +491,59 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         </div>
       </li>
       <li>
-        <div class="time">17:20</div><div class="rail"></div>
+        <div class="time">17:30</div><div class="rail"></div>
         <div><div class="card">
           <h3>新宿格蘭貝爾 Check-in</h3>
           <div class="dur">約 30 分</div>
           <p>地址：新宿區歌舞伎町 2-14-5。副都心線東新宿站 A1 出口步行 4 分、新宿三丁目站 E1 出口 7 分。</p>
-          <div class="biz"><b>Check-in 12/18 15:00 起 ／ Check-out 12/21 11:00 前</b>　<span class="tag ok">已由你確認</span>　·　主方案 17:20 到、備案 A 19:00 到，都晚於 15:00</div>
+          <div class="biz"><b>Check-in 12/18 15:00 起 ／ Check-out 12/21 11:00 前</b>　<span class="tag ok">已由你確認</span>　·　17:30 到遠晚於 15:00，不需要額外處理</div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">17:50</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　飯店 → 新宿三丁目（新宿通り）</span>　約 7–9 分　·　緩衝抓 10 分。<b>空手出門</b>，行李已放飯店</div>
+        <div class="time">18:00</div><div class="rail"></div>
+        <div class="leg"><span class="line">步行　飯店 → 新宿三丁目（新宿通り）</span>　約 7–9 分　·　緩衝抓 12 分。<b>空手出門</b>，行李已放飯店</div>
       </li>
       <li>
-        <div class="time">18:00</div><div class="rail"></div>
+        <div class="time">18:10</div><div class="rail"></div>
         <div><div class="card">
           <h3>Disney FLAGSHIP TOKYO（迪士尼旗艦店）</h3>
-          <div class="dur">停留 90 分（18:00–19:30）　·　備案 A 只能給 60 分</div>
-          <p>日本最大的迪士尼商店，B1 到 2F 共三層，B1 是 Marvel 區。建議先在官網把想買的品項與樓層看過一輪再進去。</p>
-          <p>注意：達菲與好友系列這裡<b>不賣</b>，那是迪士尼海洋限定，要在 12/18 白天就買完。</p>
-          <p><b>這裡就是主方案換來的東西：</b>18:00 開逛、給滿 90 分，旗艦店與 Bic Camera 都不用壓縮。改走備案 A 的話 19:35 才進得來，旗艦店只剩 60 分。</p>
+          <div class="dur">停留 90 分</div>
+          <p>日本最大的迪士尼商店，B1 到 2F 共三層，B1 是 Marvel 區。</p>
+          <p>有完整 90 分鐘，不用趕。</p>
+          <p>注意：達菲與好友系列這裡<b>不賣</b>，那是迪士尼海洋限定，要在今天白天就買完。</p>
           <div class="biz"><b>營業：</b>10:00–21:00　·　新宿三丁目站 B6 出口步行 1 分（地下道直通）　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">19:30</div><div class="rail"></div>
+        <div class="time">19:40</div><div class="rail"></div>
         <div class="leg"><span class="line">步行　迪士尼旗艦店 → BIC CAMERA 新宿東口店</span>　沿新宿通り　約 3–5 分。兩家都在新宿通り上，中間隔著新宿丸井本館</div>
       </li>
       <li>
-        <div class="time">19:35</div><div class="rail"></div>
+        <div class="time">19:45</div><div class="rail"></div>
         <div><div class="card">
           <h3>BIC CAMERA 新宿東口店</h3>
-          <div class="dur">停留 60 分（19:35–20:35）　·　備案 A 只能給 50 分</div>
-          <p>新宿 3-29-1 MI 新宿大樓本館（舊新宿三越 Alcott／舊 BICQLO 址），賣場約 15,000 ㎡，是 BIC CAMERA 規模最大的店之一。對面就是伊勢丹新宿。地下與新宿地下街 A5 出口直通，下雨天不用出地面。</p>
-          <p><b>為什麼排在第二天晚上：</b>電器體積大又重，越早買完越好，放回飯店之後剩下兩天就不用再提。而且 12/20 晚上已經排了京王百貨、LUMINE、晚餐、Alpen，塞不進去。</p>
-          <p>免稅櫃台在店內集中辦理，帶護照。大型家電要注意<b>電壓（日本 100V）與插頭</b>，以及行李箱裝不裝得下。</p>
+          <div class="dur">停留 60 分</div>
+          <p>新宿 3-29-1 MI 新宿大樓本館，賣場約 15,000 ㎡，是 BIC CAMERA 規模最大的店之一。對面就是伊勢丹新宿。地下與新宿地下街 A5 出口直通。</p>
+          <p>電器體積大又重，第二天晚上買完，剩下兩天就不用再提。免稅櫃台在店內集中辦理，帶護照。大型家電要注意<b>電壓（日本 100V）與插頭</b>，以及行李箱裝不裝得下。</p>
           <p class="load"><b>負重提醒：</b>買完到回飯店約 12 分平路。若買了大件，從店門口叫計程車回飯店約 5 分、¥800 上下（概估）。</p>
-          <div class="biz"><b>營業：</b>10:00–22:00　·　<b>年中無休</b>　·　新宿三丁目站 A5 出口直通、JR 新宿站東口步行約 5 分　<span class="tag ok">已查證</span><br><b>備註：</b>對面的<b>伊勢丹新宿 本館 5F 有育てるタオル專櫃，只到 20:00</b>。想在今晚就買掉，得在 19:35–20:00 之間過去，等於從 BIC 這 60 分鐘裡切 20 分出來；不然就維持 12/20 下午在表參道 showroom 買（那裡品項最齊、人少）。</div>
+          <div class="biz"><b>營業：</b>10:00–22:00　·　<b>年中無休</b>　·　新宿三丁目站 A5 出口直通、JR 新宿站東口步行約 5 分　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li>
-        <div class="time">20:35</div><div class="rail"></div>
+        <div class="time">20:50</div><div class="rail"></div>
         <div><div class="card">
           <h3>晚餐（新宿）＋ 唐吉訶德</h3>
-          <div class="dur">約 90 分（20:35–22:05）</div>
-          <p>晚餐在歌舞伎町一帶找，飯店步行 5 分內選擇很多。<b>這一格刻意不指定店家</b>——當天用 Google Map 看評價與等待時間再決定比較實際。改成主方案之後這一格從 21:35 提前到 20:35，餐廳選擇比原本多很多。</p>
+          <div class="dur">約 100 分</div>
+          <p>晚餐在歌舞伎町一帶找，飯店步行 5 分內選擇很多。當天用 Google Map 看評價與等待時間再決定。</p>
           <p>吃完到唐吉訶德歌舞伎町店（24 小時）掃藥妝，DHC 保健食品在這裡買通常最省事。免稅要帶護照，單店同日消費滿 ¥5,000 才適用。</p>
-          <p class="load"><b>負重提醒：</b>旗艦店、Bic Camera 與唐吉訶德買的東西要提回飯店，路程約 7–9 分平路，無階梯。</p>
         </div></div>
       </li>
     </ol>
 
     <div class="panel traffic" style="margin-top:1rem">
-      <h4>備案 A：17:00 離園（若當天想在海洋待久一點）</h4>
-      <p>海洋從 6 小時 50 分拉長到 8 小時 30 分，多 1 小時 40 分。代價在新宿：搭 17:50 那班、18:40 到新宿、19:00 進飯店，旗艦店壓到 60 分、Bic 壓到 50 分，晚餐要到 21:35 才吃得到。</p>
-      <p><b>時程：</b>17:00 離園 → 度假區線 海洋站 → Resort Gateway → 17:20–17:45 飯店取行李 → 步行至巴士總站 East → 17:50 發車 → 18:40 抵達巴士總站新宿 → 19:00 進飯店。</p>
-      <p><b>中間值：</b>若 16:00 才離園，趕不上 16:20，只能搭 17:20 那班（18:10 到新宿），比備案 A 早 30 分。</p>
+      <h4>備案：17:00 離園，搭 17:50 班次</h4>
+      <p>海洋待到 17:00，18:40 到巴士總站新宿、19:00 進飯店。12 月日落約 16:30，這樣看得到海洋入夜後的點燈。</p>
+      <p>代價是旗艦店只剩 60 分、Bic 50 分、晚餐推到 21:35。<b>想看夜間點燈就改搭 17:50 那班</b>，後面的順序不用動。</p>
     </div>
 
     <div class="panel rain" style="margin-top:1rem">
@@ -679,18 +568,20 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
     <div class="panels">
       <div class="panel traffic">
         <h4>交通重點</h4>
-        <p><b>東京鐵塔拍夜景</b>，所以港區整段排在傍晚：<b>16:30 從銀座出發 → 艾許 16:55 → 鐵塔 18:05 → 野田岩晚餐 19:05</b>。艾許 19:00 關門，16:55 進去有 2 小時緩衝。</p>
+        <p>東京鐵塔改夜景後，港區整段往後推到傍晚：<b>16:50 過去 → 艾許 17:15 → 鐵塔 18:20 → 野田岩晚餐 19:15</b>。艾許 19:00 關門，17:15 進去還有 60 分鐘緩衝，安全。</p>
+        <p><b>東京車站伴手禮這站拿掉了。</b>YOKU MOKU 改成擇一之後，新宿的京王店與高島屋店都在 12/20 的動線上。省下的 55 分鐘讓銀座那段整個鬆開，伊東屋因此能給到 120 分。</p>
         <p>最後從野田岩走回神谷町，日比谷線 3 站到日比谷，剛好接上丸之內仲通的南端，由南往北走完再從東京站搭丸之內線直達新宿三丁目。整天是一個順時針的迴圈，沒有折返。</p>
       </div>
       <div class="panel rain">
         <h4>雨天備案</h4>
-        <p>會被雨影響的只有東京鐵塔外拍與丸之內仲通散步。鐵塔不登塔，下雨就縮短塔下停留、提早去野田岩（走路 10 分）；仲通改走丸大樓、新丸大樓、KITTE 的室內動線。</p>
-        <p>其餘全在室內：伊東屋與 LOFT 整棟室內、艾許在麻布台之丘館內、野田岩是餐廳。</p>
+        <p>會被雨影響的只有東京鐵塔外拍與丸之內仲通散步。鐵塔那段改成在麻布台之丘室內看夜景，或直接省略；仲通改走丸大樓、新丸大樓、KITTE 的室內動線。</p>
+        <p>其餘全在室內：東京車站伴手禮在地下街、伊東屋與 LOFT 整棟室內、艾許在麻布台之丘館內、野田岩是餐廳。</p>
       </div>
     </div>
 
     <div class="panel load-panel">
-      <h4>今天要提著東西走路的路段（合計約 81 分鐘）</h4>
+      <h4>今天要提著東西走路的路段（合計約 76 分鐘）</h4>
+      <p><b>東京車站伴手禮已經拿掉。</b>你把 YOKU MOKU 改成「擇一」之後，新宿的京王店與高島屋店都在 12/20 的動線上，沒有理由在 12/19 提著它跑一整晚。負重因此從 3 袋降成 2 袋，起點也從 12:50 延後到 13:20。</p>
       <ul>
         <li><b>14:55　伊東屋 → LOFT　步行 6 分</b>　<span class="lv1">1 袋</span></li>
         <li><b>16:30　銀座站內轉乘 5 分＋神谷町出站到麻布台 5 分</b>　<span class="lv2">2 袋</span></li>
@@ -700,11 +591,12 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <li><b>20:45–21:05　丸之內仲通　正常步行 20 分</b>　<span class="lv3">2 袋＋艾許</span></li>
         <li><b>21:10　東京站內 6 分＋新宿三丁目 → 飯店 7 分</b>　<span class="lv3">2 袋＋艾許</span></li>
       </ul>
+      <p>滿載的步行時間還是 65 分左右，但<b>重量少了一袋食品</b>，而且文具類可以壓進背包，實際體感差很多。要再減就只剩「銀座後先回飯店卸貨」那招，代價是卡死野田岩的 L.O. 20:00，不建議。</p>
     </div>
 
     <ol class="tl">
       <li>
-        <div class="time">09:00</div><div class="rail"></div>
+        <div class="time">08:40</div><div class="rail"></div>
         <div><div class="card">
           <h3>飯店出發</h3>
           <div class="dur">—</div>
@@ -712,7 +604,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         </div></div>
       </li>
       <li class="move">
-        <div class="time">09:05</div><div class="rail"></div>
+        <div class="time">08:45</div><div class="rail"></div>
         <div class="leg">
           <span class="line">① 副都心線　東新宿(F12) → 新宿三丁目(F13)</span>　往澀谷・元町中華街方向　1 站 2 分<br>
           <span class="line">② 站內轉 丸之內線　新宿三丁目(M09) → 大手町(M18)</span>　往池袋方向　10 站 15 分<br>
@@ -721,13 +613,14 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         </div>
       </li>
       <li>
-        <div class="time">09:50</div><div class="rail"></div>
+        <div class="time">09:30</div><div class="rail"></div>
         <div><div class="card">
           <h3>小網神社（東京錢洗弁天）</h3>
-          <div class="dur">停留 45 分</div>
-          <p class="key"><b>記得帶五色錢。</b>錢洗場要用，飯店出發前就要放進包包。</p>
+          <div class="dur">停留 65 分</div>
+          <p class="load"><b>記得帶五色錢。</b></p>
           <p>日本橋小網町 16-23。境內不大但很集中：強運厄除的社殿、萬福舟乘弁財天、錢洗場。洗過的錢留著不花，當「種錢」。</p>
           <p>實務上參拜、御守授與、錢洗<b>分成三條不同的隊伍</b>。參拜那條週末可能排很久，但錢洗那條通常 10 分鐘左右就輪到。竹籃裡日幣、台幣、紙鈔、硬幣都可以洗。</p>
+          
           <div class="biz"><b>境內：</b>終日開放　·　<b>御守與授與品：</b>到 17:00　<span class="tag unk">授與所時間為旅遊紀錄，非官方公告</span></div>
         </div></div>
       </li>
@@ -737,16 +630,16 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           <span class="line">① 步行　小網神社 → 人形町站</span>　約 7 分<br>
           <span class="line">② 都營淺草線　人形町(A14) → 宝町(A12)</span>　往西馬込方向　<b>直達不換車</b>　2 站 3 分　·　¥180<br>
           → 宝町站步行約 5 分至銀座 1-15-6　·　合計約 <b>18 分，緩衝抓 25 分</b>　·　<span class="lv0">空手</span><br>
-          <b>注意：店已搬到銀座 1 丁目</b>（中央區銀座 1-15-6 銀座東洋大樓 1F），不在京橋站旁了
+          <b>注意：店已搬到銀座 1 丁目</b>，不在京橋站旁了，出發前用你存的地圖連結導航
         </div>
       </li>
       <li>
         <div class="time">11:00</div><div class="rail"></div>
         <div><div class="card">
           <h3>京ばし松輪　排隊</h3>
-          <div class="dur">排隊 30 分（11:00–11:30）</div>
-          <p><b>地址：中央區銀座 1-15-6 銀座東洋大樓 1F</b>。店名仍叫「京ばし」，但店已經在銀座一丁目。</p>
-          <p>11:30 開門，一日限量約 70 份，13:00 前常完售。11:00 到排在第一輪，這一格不動——前面的小網神社往前挪，就是為了把這 30 分鐘留住。</p>
+          <div class="dur">排隊 30 分</div>
+          <p><b>新地址：中央區銀座 1-15-6 銀座東洋大樓 1F</b>（已依你提供的地圖連結更正，店名仍叫「京ばし」但人已經在銀座一丁目）。</p>
+          <p>依你的判斷 11:00 抵達。有食客紀錄 11:10 到時前面已排 20 人，第一輪可進 20–30 人，所以 11:00 到大致能吃到第一輪。</p>
           <p><b>為什麼一定排在今天：</b>松輪週日與國定假日公休，12/20 不能去；12/21 要趕 14:00 的飛機。整趟只剩今天這個窗口。</p>
         </div></div>
       </li>
@@ -761,20 +654,21 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
       </li>
       <li class="move">
         <div class="time">12:35</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　松輪（銀座 1-15-6）→ 銀座 伊東屋 本店（銀座 2-7-15）</span>　沿中央通り往西南　約 8 分　·　緩衝抓 15 分　·　<span class="lv0">空手</span></div>
+        <div class="leg"><span class="line">步行　松輪（銀座 1-15-6）→ 銀座中央通り</span>　往西南　約 8 分　·　緩衝抓 15 分　·　<span class="lv0">空手</span></div>
       </li>
       <li>
         <div class="time">12:50</div><div class="rail"></div>
         <div><div class="card">
           <h3>銀座 伊東屋 本店</h3>
-          <div class="dur">停留 120 分（12:50–14:50）</div>
+          <div class="dur">停留 120 分</div>
           <p>銀座 2-7-15，中央通り上的細長大樓，每層一個主題（CARRY／HOME／CRAFT 等）。2 樓可以現場寫信、現場投遞。11 樓有自家蔬菜工廠，12 樓的 CAFE Stylo 用那裡的菜。</p>
+          
           <p class="load"><b>今天的負重從這裡開始。</b></p>
           <div class="biz"><b>營業：</b>平日 10:00–20:00 ／週日、假日 10:00–19:00　·　12/19 為週六，10:00–20:00　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">14:55</div><div class="rail"></div>
+        <div class="time">14:50</div><div class="rail"></div>
         <div class="leg"><span class="line">步行　伊東屋 → 銀座 LOFT</span>　約 6 分　·　緩衝抓 10 分（銀座 2 丁目，並木通り上的銀座 Bellevia 館）　·　<span class="lv1">1 袋</span></div>
       </li>
       <li>
@@ -783,8 +677,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           <h3>銀座 LOFT</h3>
           <div class="dur">停留 80 分</div>
           <p>LOFT 的旗艦店，1–6 樓約 4,300 ㎡。5 樓的文具樓層跟伊東屋重疊度高，若伊東屋已經逛滿，這裡把重心放在生活雜貨與美妝樓層。</p>
-          <p class="key"><b>YOKU MOKU 在這裡決定：銀座買，還是留到 12/20 的京王新宿店。</b>兩家銀座的點都在往日比谷線銀座站的路上，順路不繞——<b>松屋銀座</b>（銀座 3-6-1，11:00–20:00）從 LOFT 步行約 3–5 分；<b>銀座三越</b>（銀座 4-6-16，10:00–20:00）約 6–8 分。12/19 是週六，兩家都到 20:00，16:25 離開 LOFT 完全來得及。<b>在這裡買就要多提一袋走到晚上</b>（後面還有艾許、鐵塔、野田岩、丸之內仲通）；留到 12/20 則是跟 NY Perfect Cheese 同一棟一次收齊。擇一，不要兩邊都買。</p>
-          <div class="biz"><b>LOFT 營業：</b>11:00–21:00 ／週日 11:00–20:00　·　<b>公休：</b>不定休（依銀座 Bellevia 館）　·　YOKU MOKU 兩家都是百貨內的專櫃，樓層依現場指示　<span class="tag ok">營業時間官網已查證</span><span class="tag unk">步行時間為估計</span></div>
+          <div class="biz"><b>營業：</b>11:00–21:00 ／週日 11:00–20:00　·　<b>公休：</b>不定休（依銀座 Bellevia 館）　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
@@ -816,7 +709,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           <div class="dur">停留 40 分</div>
           <p>12 月日落約 16:30，18:05 已經完全入夜，點燈狀態最好。兩個經典機位：<b>赤羽橋交叉口</b>（整座塔含底座入鏡，最常見的那個角度）與<b>芝公園 4 號地</b>（有草地前景，人比較少）。兩處都在步行範圍內。</p>
           <p>12 月晚上塔下開闊處風很大，體感很冷。拍完就往野田岩走。</p>
-          <div class="biz"><b>不登大展望台，只在塔下取景。</b>展望台的營業時間與門票都不需要確認，這一格是純拍照。</div>
+          <div class="biz"><b>已確定不登塔</b>，只在塔下取景，所以展望台的時間不影響行程</div>
         </div></div>
       </li>
       <li class="move">
@@ -855,7 +748,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
       <li class="move">
         <div class="time">21:10</div><div class="rail"></div>
         <div class="leg">
-          <span class="line">步行　仲通北端 → 東京 Metro 丸之內線 東京站(M17)</span>　約 6 分。<b>走的是地鐵的東京站，不進 JR 改札。</b>車站位在丸之內口地下，有中央改札與北改札；中央改札那側通往新丸大樓方向，從仲通北端下地下走過去最順<span class="tag ok">站體位置已查證</span><br>
+          <span class="line">步行　仲通北端 → 東京站丸之內地下改札</span>　約 6 分<br>
           <span class="line">丸之內線　東京(M17) → 新宿三丁目(M09)</span>　往荻窪方向　<b>直達不換車</b>　8 站 17 分　·　¥210<br>
           → 新宿三丁目 E1 出口步行 7 分　·　合計約 <b>32 分，緩衝抓 35 分</b>　·　<span class="lv3">2 袋＋艾許</span>
         </div>
@@ -865,7 +758,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div><div class="card">
           <h3>回飯店</h3>
           <div class="dur">—</div>
-          <p>明天 08:40 要出發去早稻田。今天買的東西先攤開整理，看有沒有壓到的。</p>
+          <p>明天 08:15 要出發去早稻田。今天買的東西先攤開整理，看有沒有壓到的。</p>
         </div></div>
       </li>
     </ol>
@@ -887,13 +780,14 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <p>今天整天串在<b>副都心線</b>上：東新宿 → 西早稻田（1 站）→ 明治神宮前（3 站）→ 澀谷 → 新宿三丁目，全部不用換車。這是把法輪寺從 12/21 移到今天最大的好處。</p>
         <p>原宿 → 表參道 → Cat Street → 澀谷 這段用走的最快也最好逛，全程約 35 分鐘散步距離，不要進站搭車。</p>
         <p><b>負重安排：</b>今天的購物全集中在傍晚之後的新宿站周邊，買完只要走 12 分鐘回飯店。白天在原宿、澀谷盡量只買小件，大件留到晚上。</p>
-        <p><b>晚上的順序是照打烊時間排的</b>：京王百貨與 Aesop 20:00 → KIDDY LAND 20:30 → LUMINE 兩館與無印 21:00 → Alpen TOKYO 與イイトルミネ 22:00。動線是西口 → 新南口 → 南口 → 東口 → 新宿通り，最後回東口進 JR 改札買 Sugar Butter Tree。<b>晚餐 22:10、約 23:40 回飯店，是五天裡最晚的一晚。</b></p>
-        <p><b>20:00 之後有兩站貼著打烊線：</b>KIDDY LAND（20:30 關，只剩 5 分餘裕）、無印（21:00 關，排到剛好關門）。前面任一站延誤 10 分就會掉掉其中一站，當天要先想好哪個可以放掉。</p>
+        <p><b>晚上的順序完全照打烊時間排</b>：京王 20:00 → Aēsop／KIDDY LAND 20:30 → 無印／LUMINE 21:00 → Alpen 約 22:00 → JR 改札內的 Sugar Butter Tree。<b>KIDDY LAND 與無印那兩格沒有緩衝</b>，前面一延誤就會撞到打烊。</p>
+        <p><b>今天會到 23:40 才回飯店</b>，是五天裡最晚的一晚，隔天 07:00 又要起床。白天的原宿、澀谷段請盡量不要拖。</p>
         <p><b>午餐改成冷便當</b>，在新宿三丁目先買好再帶去原宿吃。西早稲田 → 新宿三丁目 → 明治神宮前都在副都心線同一方向，繞過去不算折返，多花約 35 分。</p>
       </div>
       <div class="panel rain">
         <h4>雨天備案</h4>
         <p>今天是最怕下雨的一天，戶外比例最高。雨天調整順序：法輪寺照去（御朱印在室內受理）→ 明治神宮縮短為只走到本殿 → 把 Cat Street 散步換成<b>表參道之丘</b>與<b>澀谷 Scramble Square／Hikarie</b> 室內逛街 → 提早回新宿。</p>
+        <p>澀谷 Sky 遇雨或強風會關閉戶外展望台，若原本打算去要先看官網公告。</p>
       </div>
     </div>
 
@@ -910,16 +804,18 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div class="time">09:00</div><div class="rail"></div>
         <div><div class="card">
           <h3>萬年山 法輪寺（早稻田）</h3>
-          <div class="dur">停留 45 分</div>
+          <div class="dur">停留 40 分</div>
           <p>新宿區西早稻田 1-1-15，就在穴八幡宮對面。以<b>剪紙御朱印</b>與花手水聞名，人氣款常會售完。</p>
+          <p><b>這一站我從 12/21 移到今天，原因是御朱印 9:00 才受理。</b>12/21 要在 09:15 前離開飯店去機場，等於拿不到御朱印、只能空跑一趟。若你堅持排 12/21，就只能 7:40 進去純參拜（開門 7:30），不領御朱印。</p>
           <div class="biz"><b>開門：</b>11–3 月 7:30–16:30　·　<b>御朱印受付：</b>9:00–12:30、13:00–16:00　·　<b>無公休</b>　·　東西線早稻田站 3b 出口步行 1 分　<span class="tag ok">已查證</span><br>每月受付日與限量品項會公告在官方 Instagram，出發前一週查一次。</div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">09:50</div><div class="rail"></div>
+        <div class="time">09:40</div><div class="rail"></div>
         <div class="leg">
-          <span class="line">副都心線　西早稲田(F11) → 新宿三丁目(F13)</span>　往澀谷・元町中華街方向　2 站 4 分　·　¥180<br>
-          → B3／B5 出口與伊勢丹直通，不出地面　·　<b>緩衝抓 10 分</b>
+          <span class="line">① 步行　法輪寺 → 西早稲田站</span>　約 8–10 分（去程走過的同一段，回程一樣要走）<br>
+          <span class="line">② 副都心線　西早稲田(F11) → 新宿三丁目(F13)</span>　往澀谷・元町中華街方向　2 站 4 分　·　¥180<br>
+          → B3／B5 出口與伊勢丹直通，不出地面　·　合計約 <b>18 分</b>
         </div>
       </li>
       <li>
@@ -930,6 +826,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           <p><b>今天的午餐改成冷便當，在這裡先買好再帶去原宿吃。</b>10:00 開門，你們從法輪寺過來剛好。副都心線新宿三丁目站與伊勢丹地下直通，不用出地面。</p>
           <p><b>首選：崎陽軒 シウマイ弁当。</b>1954 年發售至今，是日本「冷便當」的代名詞——「冷掉也好吃」不是安慰話，是這家從產品設計就在做的事。燒賣 5 顆、筍煮、鮪魚醬油煮、玉子燒、唐揚、魚板、杏子，配俵形飯。櫃位在本館 B1「旨の膳」區。</p>
           <p>同一區還有<b>浅草今半</b>（牛肉便當）、<b>なだ万</b>等老舖的便當櫃位，兩人可以各買一款交換著吃。</p>
+          <p><b>為什麼把午餐換成便當：</b>12/20 是週日，原宿與表參道中午幾乎每家餐廳都要排隊，排 40 分鐘很常見。買好帶著走，等於把那 40 分鐘還給行程。</p>
           <div class="biz"><b>崎陽軒櫃位：</b>10:00–20:00　·　伊勢丹新宿本館 B1　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
@@ -950,26 +847,29 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           <div class="biz"><b>開門：</b>隨日出日落調整，12 月約 6:40–16:00　·　<b>無公休</b>　<span class="tag ok">機制已查證，當月確切時間請看官網</span></div>
         </div></div>
       </li>
-      <li>
+      <li class="move">
         <div class="time">12:00</div><div class="rail"></div>
+        <div class="leg"><span class="line">步行　明治神宮本殿 → 代代木公園</span>　約 10 分。神宮境內很大，從本殿走回參道出口就要 8 分，這段不要省</div>
+      </li>
+      <li>
+        <div class="time">12:10</div><div class="rail"></div>
         <div><div class="card">
-          <h3>午餐：冷便當（代代木公園／原宿）</h3>
-          <div class="dur">停留 45 分</div>
+          <h3>午餐：冷便當（代代木公園）</h3>
+          <div class="dur">停留 40 分</div>
           <p>明治神宮出來就是代代木公園，走過去 5 分鐘，園內有大量長椅與草地。12 月中午東京約 12–13°C，晴天曬著太陽吃便當其實很舒服，這也是日本人冬天會做的事。</p>
-          <p class="load"><b>天冷或下雨的備案：</b>改到東急 Plaza 表參道（オモカド，原「東急プラザ表参道原宿」）的室內休憩區，或 JR 原宿站新站舍的候車空間。</p>
-          <p><b>不吃便當、改進餐廳的話：</b>原本那份餐廳名單沒有寫進這份行程表，我手上沒有店名。最近又確定營業的是東急 Plaza 表參道館內：<b>bills 表參道 7F</b>（8:30–22:00、L.O. 21:30）、<b>Locul Cafe 5F</b>（11:00–20:00、L.O. 19:30）、<b>STARBUCKS 6F</b>（8:00–22:30）；館內物販樓層 11:00–20:00，公休為不定休。3F 還有ちいかわベーカリー。週日中午 bills 這類店要有排 40 分鐘的心理準備。你若有原本那份名單，給我我填進去。<span class="tag ok">營業時間官網已查證</span></p>
+          <p class="load"><b>天冷或下雨的備案：</b>改到東急 Plaza 表參道原宿的室內休憩區，或 JR 原宿站新站舍的候車空間。真的不想在外面吃，就退回原本的餐廳方案（但週日中午要有排 40 分鐘的心理準備）。</p>
           <p>便當請當天吃完，不要留到晚上。</p>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">12:45</div><div class="rail"></div>
+        <div class="time">12:50</div><div class="rail"></div>
         <div class="leg"><span class="line">步行　代代木公園 → 竹下通／原宿</span>　約 10 分</div>
       </li>
       <li>
-        <div class="time">12:55</div><div class="rail"></div>
+        <div class="time">13:00</div><div class="rail"></div>
         <div><div class="card">
           <h3>原宿、竹下通</h3>
-          <div class="dur">停留 35 分</div>
+          <div class="dur">停留 20 分</div>
           <p>週日的竹下通是全東京最擠的街之一，走一趟拍個照就好。真正要逛的是後面的表參道與 Cat Street。</p>
         </div></div>
       </li>
@@ -1035,78 +935,76 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           <h3>澀谷逛街（彈性）＋ 鞋子類快閃</h3>
           <div class="dur">停留 45 分</div>
           <p><b>鞋子類抓「進去掃一輪、沒喜歡的就走」的節奏，各 10–15 分鐘。</b>澀谷有 ASICS 與 HOKA 兩家門市，兩家加起來抓 25–30 分，剩下的時間留給澀谷本身。</p>
+          <p>其他可選：Scramble Square、Hikarie、LOFT、@cosme、宮下公園。<b>澀谷 Sky 已確定不去</b>，這段不必為它保留時間。</p>
         </div></div>
       </li>
       <li class="move">
         <div class="time">17:35</div><div class="rail"></div>
-        <div class="leg">
-          <span class="line">JR 山手線　澀谷(JY20) → 新宿(JY17)</span>　外回り 往新宿・池袋方向　2 站 6 分　·　¥170<br>
-          出<b>西口</b>，京王百貨店就在站體旁　·　<b>緩衝抓 15 分</b>（澀谷站月台深、轉換層多）
-        </div>
+        <div class="leg"><span class="line">JR 山手線　澀谷(JY20) → 新宿(JY17)</span>　外回り 往新宿・池袋方向　2 站 6 分　·　¥170　·　<b>緩衝抓 15 分</b>（澀谷站月台深、轉換層多）。先到西口的京王百貨</div>
       </li>
       <li>
         <div class="time">17:50</div><div class="rail"></div>
         <div><div class="card">
           <h3>京王百貨店 新宿店（西口）</h3>
-          <div class="dur">停留 35 分（17:50–18:25）</div>
-          <p>一次收三項：<b>NY Perfect Cheese（1F）</b>、<b>YOKU MOKU 京王新宿店</b>、<b>Yonex（5F，快閃 10 分）</b>。5F 還有伊東屋新宿店，若 12/19 銀座本店沒買完可以補。</p>
-          <p><b>20:00 打烊，和 Aesop 並列今晚關最早的，所以排第一。</b></p>
-          <div class="biz"><b>營業：</b>B1–2F 平日 10:00–20:30 ／<b>週日、假日 10:00–20:00</b>　·　3F 以上 全日 10:00–20:00　·　8F 餐廳街 11:00–22:00　·　<b>12/20 為週日，全館 20:00 打烊</b>　<span class="tag ok">官網已查證</span></div>
+          <div class="dur">停留 30 分</div>
+          <p>一次收三項：<b>NY Perfect Cheese（1F）</b>、<b>YOKU MOKU（京王新宿店）</b>、<b>Yonex（5F，快閃 10 分）</b>。</p>
+          <p class="load"><b>YOKU MOKU 京王還是銀座，決策點在 12/19 離開銀座 LOFT 時（16:25）。</b>那時若已在銀座買好，今天這裡就只拿 NY Perfect Cheese 與 Yonex。</p>
+          <p><b>百貨 20:00 打烊，是今晚關最早的一家</b>，所以排第一。今晚整串的順序都是照打烊時間排的。</p>
+          <div class="biz"><span class="tag unk">營業時間未查證，百貨通常約 10:00–20:00</span></div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">18:25</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　京王百貨（西口）→ NEWoMan 新宿（新南口）</span>　約 8 分，沿站體南側走　·　<b>緩衝抓 10 分</b></div>
+        <div class="time">18:20</div><div class="rail"></div>
+        <div class="leg"><span class="line">地下通道步行　京王百貨（西口）→ Aēsop Shinjuku（東口北側）</span>　約 12 分。穿過新宿站地下道到東口再往北，全程不出地面</div>
       </li>
       <li>
         <div class="time">18:35</div><div class="rail"></div>
         <div><div class="card">
-          <h3>Aesop ニュウマン新宿</h3>
-          <div class="dur">停留 20 分（18:35–18:55）</div>
-          <p>NEWoMan 新宿 1F，新宿站新南口側。</p>
-          <p class="key"><b>週日 20:00 就關</b>，比 LUMINE 三館早一小時。排在京王之後、LUMINE 之前，就是為了避開這個時間。</p>
-          <p class="load">Aesop 大多是液體，回程要走托運，不要放手提行李。</p>
-          <div class="biz"><b>營業：</b>週一～週六 11:00–20:30 ／<b>週日、假日 11:00–20:00</b>　·　NEWoMan 新宿 1F　<span class="tag ok">官網樓層指南已查證</span></div>
+          <h3>Aēsop Shinjuku</h3>
+          <div class="dur">停留 20 分</div>
+          <p>新宿 3-36-5，新宿站東口北側。Google 評分 4.0／115 則，評論普遍提到店員會仔細介紹、可以試用，也接受免稅（單店滿 ¥5,000）。</p>
+          
+          <div class="biz"><b>營業：</b>每天 11:00–20:30　·　<b>全年無休</b>　<span class="tag ok">已查證</span>　·　20:30 打烊，排在 18:35 有充足緩衝</div>
         </div></div>
       </li>
       <li class="move">
         <div class="time">18:55</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　NEWoMan（新南口）→ LUMINE 新宿（南口）</span>　約 3–5 分，兩棟相鄰</div>
+        <div class="leg"><span class="line">步行　Aēsop → LUMINE 新宿（南口）</span>　約 8 分，走新宿站地下通道不出地面</div>
       </li>
       <li>
-        <div class="time">19:00</div><div class="rail"></div>
+        <div class="time">19:05</div><div class="rail"></div>
         <div><div class="card">
-          <h3>LUMINE 新宿　東京牛奶起司工房</h3>
-          <div class="dur">停留 25 分（19:00–19:25）</div>
-          <p>LUMINE 新宿 B2，南口側。</p>
-          <div class="biz"><b>營業：</b>購物樓層 11:00–21:00（平日與假日相同）　<span class="tag ok">官網已查證</span></div>
+          <h3>LUMINE 新宿（南口）</h3>
+          <div class="dur">停留 20 分</div>
+          <p>目標：<b>東京牛奶起司工房（B2）</b>。</p>
+          <div class="biz"><span class="tag unk">營業時間未查證，常見約 11:00–21:00，B2 食品區稍早開</span></div>
         </div></div>
       </li>
       <li class="move">
         <div class="time">19:25</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　LUMINE 新宿（南口）→ LUMINE EST（東口）</span>　約 5 分</div>
+        <div class="leg"><span class="line">步行　LUMINE（南口）→ LUMINE EST（東口）</span>　約 5 分</div>
       </li>
       <li>
         <div class="time">19:30</div><div class="rail"></div>
         <div><div class="card">
-          <h3>LUMINE EST　Aiam 香水</h3>
-          <div class="dur">停留 25 分（19:30–19:55）</div>
-          <p>LUMINE EST B1，東口側。</p>
-          <div class="biz"><b>營業：</b>購物 平日 11:00–21:00 ／週日、假日 10:30–21:00（餐飲到 22:00）　<span class="tag ok">官網已查證</span></div>
+          <h3>LUMINE EST（東口）</h3>
+          <div class="dur">停留 25 分</div>
+          <p>目標：<b>Aiam 香水（B1）</b>。</p>
+          <div class="biz"><span class="tag unk">營業時間未查證，常見約 11:00–21:00</span></div>
         </div></div>
       </li>
       <li class="move">
         <div class="time">19:55</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　LUMINE EST → KIDDY LAND 新宿店</span>　約 5 分（新宿 3-23-16 オカダヤビル）</div>
+        <div class="leg"><span class="line">步行　LUMINE EST → KIDDY LAND 新宿店</span>　約 5 分（新宿 3-23-16）</div>
       </li>
       <li>
         <div class="time">20:00</div><div class="rail"></div>
         <div><div class="card">
           <h3>KIDDY LAND 新宿店　目標：SNOOPY</h3>
-          <div class="dur">停留 25 分（20:00–20:25）</div>
-          <p><b>目標明確就直接上 4F 的 SNOOPY TOWN Shop 新宿店</b>，搭電梯上去，不要一層一層逛。其他樓層（拉拉熊 Store ＆ 角落生物 shop、ちいかわらんど、コウペンちゃんのおみせやさん、miffy style）順路看看就好。</p>
-          <p class="key"><b>20:30 打烊，這一格只有 5 分鐘的餘裕。</b>前面任何一站延誤，這裡就會被壓掉。</p>
-          <div class="biz"><b>營業：</b>10:30–20:30　·　<b>無特定公休</b>　·　JR 新宿站東口步行約 5 分　·　Alpen TOKYO 就在隔壁（3-23-7）　<span class="tag ok">已查證</span></div>
+          <div class="dur">停留 25 分</div>
+          <p>新宿 3-23-16 オカダヤビル 1F–4F，2025 年 4 月開幕的旗艦店。<b>SNOOPY TOWN Shop 在 4 樓</b>，直接搭電梯上去。</p>
+          <p class="load"><b>20:30 準時打烊，這一格沒有緩衝。</b>20:00 進去等於只有 25 分鐘＋5 分鐘走人。</p>
+          <div class="biz"><b>營業：</b>10:30–20:30　·　<b>無特定公休</b>　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
@@ -1117,61 +1015,56 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div class="time">20:30</div><div class="rail"></div>
         <div><div class="card">
           <h3>無印良品 新宿通り（咖啡牛奶布丁）</h3>
-          <div class="dur">停留 30 分（20:30–21:00）</div>
-          <p>新宿 3-17-1，B1–3F 四層大型店，<b>1F 是食品賣場</b>。新宿三丁目站 B5 出口（伊勢丹直通口）即到。</p>
-          <p><b>目標：</b>オリジナルブレンド コーヒーミルクプリン 215g／¥250。<b>常溫保存、賞味期限 105 天</b>，可直接裝行李箱帶回台灣，回去再冰藏凝固。一盒 215g，買幾盒要算行李重量。</p>
-          <p class="key"><b>21:00 關門，這一格是貼著打烊線排的。</b>直接下 1F 食品賣場拿布丁結帳，不要逛其他樓層。</p>
+          <div class="dur">停留 30 分</div>
+          <p>新宿 3-17-1，<b>1F 是食品賣場</b>。新宿三丁目站 B5 出口（伊勢丹直通口）即到。</p>
+          <p><b>目標：</b>オリジナルブレンド コーヒーミルクプリン 215g／¥250。常溫保存、賞味期限 105 天，可直接裝行李箱帶回台灣，回去再冰藏凝固。<b>買幾盒當天看行李空間決定，不預先設定。</b></p>
+          <p class="load"><b>21:00 準時打烊</b>，這一格同樣沒有緩衝。</p>
           <div class="biz"><b>營業：</b>10:00–21:00　<span class="tag ok">已查證</span></div>
         </div></div>
       </li>
       <li class="move">
         <div class="time">21:00</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行　無印 → Alpen TOKYO（新宿 3-23-7 ユニカビル）</span>　約 5–6 分，往東折回</div>
+        <div class="leg"><span class="line">步行　無印 → Alpen TOKYO</span>　約 6 分（3-17-1 → 3-23-7）</div>
       </li>
       <li>
         <div class="time">21:05</div><div class="rail"></div>
         <div><div class="card">
-          <h3>Alpen TOKYO</h3>
-          <div class="dur">停留 25 分（21:05–21:30）</div>
-          <p>ASICS、HOKA、Yonex 同一棟，白天在澀谷沒挑到的鞋子在這裡一次收尾，不用跑三家。</p>
-          <p>22:00 打烊，這一格有 30 分鐘餘裕，是今晚最後一個時間寬鬆的點。</p>
-          <div class="biz"><b>營業：</b>平日 11:00–22:00 ／<b>週六日與假日 10:00–22:00</b>　·　新宿 3-23-7 ユニカビル 3F–5F　·　新宿東口步行 1 分　<span class="tag ok">官網已查證</span></div>
+          <h3>Alpen TOKYO（鞋子類收尾）</h3>
+          <div class="dur">停留 30 分　·　快閃</div>
+          <p>新宿 3-23-7 Unika 大樓，JR 新宿東口步行 1 分，地下 2 樓到地上 8 樓共 10 層。<b>ASICS、HOKA、Yonex 同一棟</b>，1 樓是跑鞋區。白天在澀谷沒逛完的這裡一次補齊，沒喜歡的款就走。</p>
+          <div class="biz"><span class="tag unk">營業時間未查證（一般大型店約至 22:00），請當週確認</span></div>
         </div></div>
       </li>
       <li class="move">
-        <div class="time">21:30</div><div class="rail"></div>
-        <div class="leg"><span class="line">步行＋進改札　Alpen TOKYO → JR 新宿站 東口改札 → B1 イイトルミネ</span>　約 10 分　·　<b>用 Suica 感應「タッチでエキナカ」進站，¥140／人、限 2 小時</b>，買完原路感應出來</div>
+        <div class="time">21:35</div><div class="rail"></div>
+        <div class="leg"><span class="line">步行　Alpen → JR 新宿站改札</span>　約 5 分</div>
       </li>
       <li>
         <div class="time">21:40</div><div class="rail"></div>
         <div><div class="card">
-          <h3>イイトルミネ　Sugar Butter Tree</h3>
-          <div class="dur">停留 15 分（21:40–21:55）</div>
-          <p class="key"><b>這裡在 JR 新宿站 B1 改札內，要進站才買得到。</b>從東口改札感應進去，站內往西改札方向走到 B1。營業到 22:00。</p>
-          <p><b>沒買到的話，機場還有一次機會，但不是同一個東西。</b>12/21 出境後，成田 T1 南翼 3F 管制區的 <b>Fa-So-La TAX FREE AKIHABARA</b>（07:30–22:00）賣的是國際線限定版「米と麦の抹茶ショコラサンド」¥1,450（稅拔），結帳要出示機票。<b>經典款的「シュガーバターサンドの木」在管制區內買不到</b>——成田賣經典款的 ANA FESTA 在 T2 大廳與 T1 國內線 gate，都不在你們的動線上。</p>
-          <div class="biz"><b>イイトルミネ 營業：</b>08:00–22:00（部分區域 07:00–23:00）　·　JR 新宿站 B1 改札內（西改札方向）　<span class="tag ok">官網已查證</span></div>
+          <h3>Sugar Butter Tree（JR 新宿站 改札內）</h3>
+          <div class="dur">停留 25 分</div>
+          <p>シュガーバターの木，銀之葡萄旗下、2010 年誕生的奶油穀片點心專門店，招牌是「シュガーバターサンドの木」。</p>
+          <p class="load"><b>店在 JR 改札內</b>，用 Suica 感應進站，出來時扣<b>最低區間約 ¥140／人</b>。不搭車也可以，這是日本車站的「入場」計費方式。</p>
+          <p><b>沒買到的備案：</b>成田 T1 南翼管制區也有，但那邊是<b>國際線限定的抹茶口味</b>，跟一般版不一樣。</p>
+          <div class="biz"><span class="tag unk">新宿站改札內的實際櫃位、營業時間與入場計費金額皆未查證，出發前請確認</span></div>
         </div></div>
-      </li>
-      <li class="move">
-        <div class="time">21:55</div><div class="rail"></div>
-        <div class="leg"><span class="line">出改札　JR 新宿站 → 歌舞伎町</span>　約 12 分</div>
       </li>
       <li>
         <div class="time">22:10</div><div class="rail"></div>
         <div><div class="card">
           <h3>晚餐（歌舞伎町）</h3>
-          <div class="dur">停留 60 分（22:10–23:10）</div>
-          <p><b>不預先指定店家，當天開 Google Map 現場挑。</b>範圍抓飯店周邊 500 公尺（步行 5–7 分）內，<b>吃完直接走回去</b>，不用再折返。</p>
-          <p>這個時間歌舞伎町的店還很多，但若想早點回去，晚餐縮到 45 分就能提前 15 分。</p>
+          <div class="dur">停留 75 分</div>
+          <p><b>這是五天裡最晚的一餐。</b>22:10 開始，選飯店步行 5 分內、營業到深夜的店。歌舞伎町這個時段選擇仍多，但建議白天就先看好兩間備案。</p>
         </div></div>
       </li>
       <li>
-        <div class="time">23:15</div><div class="rail"></div>
+        <div class="time">23:25</div><div class="rail"></div>
         <div><div class="card">
           <h3>回飯店，路上補藥妝</h3>
-          <div class="dur">約 25 分</div>
-          <p>途中會經過唐吉訶德歌舞伎町店（24 小時），DHC 等保健食品在這裡收尾。</p>
-          <p class="load"><b>今晚是五天裡最晚的一天，約 23:40 回到飯店。</b>隔天 07:00 就要起床整理行李、07:50 出門去唐吉訶德，等於只睡 7 小時出頭，而那天沒有緩衝。</p>
+          <div class="dur">約 15 分</div>
+          <p>途中經過唐吉訶德歌舞伎町店（24 小時），DHC 等保健食品在這裡收尾。約 <b>23:40 回到飯店</b>。</p>
+          <p class="load"><b>隔天 07:00 就要起床整理行李</b>，今晚只睡得到 7 小時左右，請有心理準備。</p>
         </div></div>
       </li>
       <li>
@@ -1179,7 +1072,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div><div class="card">
           <h3>行李整理</h3>
           <div class="dur">—</div>
-          <p class="key">明天 11:00 前要退房，但你們 09:00 就會走。<b>今晚把托運行李收好</b>，液體與指甲剪類放托運，免稅封條別拆。布丁是常溫商品，直接放行李箱，不用擔心保冷。</p>
+          <p>明天 11:00 前要退房，但你們 09:00 就會走。今晚把托運行李收好，液體與指甲剪類放托運，免稅封條別拆。布丁是常溫商品，直接放行李箱，不用擔心保冷。</p>
         </div></div>
       </li>
     </ol>
@@ -1213,13 +1106,9 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div><div class="card">
           <h3>早餐、整理行李</h3>
           <div class="dur">約 50 分</div>
-          <p>液體、指甲剪類放托運，免稅封條不要拆。</p>
-          <p><b>早餐二選一：</b></p>
-          <ol class="opts">
-            <li><b>超商快速解決（推薦）。</b>飯店附近 24 小時超商買飯糰／三明治／咖啡，邊整理行李邊吃，最省時間。</li>
-            <li><b>留到機場吃。</b>T1 南翼保安檢查後的 Tokyo Food Bar（07:45–21:00 L.O.，天丼、豚骨拉麵、素食擔擔麵、咖啡）在 12:00 進管制區後就能用，接上後面的免稅逛街時段。</li>
-          </ol>
-          <div class="biz">飯店自助早餐：12F restaurant G，07:00–10:30（L.O. 10:00）、¥2,500／人（含稅）——但這時段要同時收行李，50 分鐘吃不完整套，這天不建議選。回程 BR197 的機上餐約 15:00 前後供應。<span class="tag ok">已查證</span></div>
+          <p><b>早餐二選一：</b>① 飯店附近的超商快速解決，把時間留給整理行李；② 完全不吃，留到成田機場的 <b>Tokyo Food Bar</b>（管制區內，12:00 起有 80 分鐘）。</p>
+          <p>昨晚 23:40 才回來，今天起床會比較辛苦，行李昨晚沒收完的話這裡要補。液體、指甲剪類放托運，免稅封條不要拆。回程 BR197 的機上餐約 15:00 前後供應。</p>
+          <div class="biz"><span class="tag unk">Tokyo Food Bar 在 T1 的位置與營業時間未查證</span></div>
         </div></div>
       </li>
       <li>
@@ -1250,9 +1139,10 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
         <div class="time">09:45</div><div class="rail"></div>
         <div><div class="card">
           <h3>N'EX 成田特快　新宿 → 成田機場</h3>
-          <div class="dur">約 85–90 分</div>
+          <div class="dur">搭 <b>09:30–10:00 之間</b>的班次　·　車程 <b>84–95 分</b></div>
           <p>全車指定席，有大型行李放置區，不用跟人擠。<b>第一航廈是「成田空港」站，不要在「空港第 2 大樓」站下車。</b></p>
-          <div class="biz"><b>票價：</b>普通車指定席約 ¥3,250／人　<span class="tag unk">票價與班次未查證，請以 JR East 官網為準</span></div>
+          <p><b>09:45 是目標時間，不是實際班次。</b>新宿發往成田約每小時 1–2 班，現行時刻參考：05:55 / 06:34 / 07:07 / 07:27 / 08:05…（車程 84–95 分）。<b>09 時台與 10 時台的確切班次請前一天查官網並劃位</b>，抓 09:30–10:00 之間發車、11:20 前抵達成田。</p>
+          <div class="biz"><b>票價：</b>普通車指定席約 ¥3,250／人　·　<b>車程 84–95 分</b><span class="tag ok">現行班次與車程已查證</span><br>2026/12 的實際時刻表現在還查不到（各站通常只開放兩個月內），出發前一週務必重查並劃位<span class="tag unk">12 月時刻未查證</span></div>
         </div></div>
       </li>
       <li>
@@ -1288,49 +1178,146 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
     </ol>
   </section>
 
-  <!-- ================= 伴手禮清單 ================= -->
-  <section class="block" id="gifts">
-    <h2>伴手禮與採買清單</h2>
-    <p>依行程順序排列。時間為行程表上的預定時段，地點以能實際走到的為準。</p>
+  <!-- ================= 公休一覽 ================= -->
+
+  <section class="block" id="shopping">
+    <h2>採買清單（依購買時間排序）</h2>
+    <p>五天裡所有「要買的東西」集中在這裡，出發前可以直接照這張表勾。地點欄寫的是實際櫃位，不是只有店名。</p>
     <div class="scroller">
       <table>
-        <thead>
-          <tr><th>品項</th><th>地點</th><th class="c">日期</th><th class="c">時段</th><th>備註</th></tr>
-        </thead>
+        <thead><tr><th>品項</th><th>地點／樓層</th><th>時間</th><th>備註</th></tr></thead>
         <tbody>
-          <tr><td data-label="品項">迪士尼樂園商品</td><td data-label="地點">園內 World Bazaar 等</td><td class="c" data-label="日期">12/17</td><td class="c" data-label="時段">15:40–21:00</td><td data-label="備註">—</td></tr>
-          <tr><td data-label="品項"><b>達菲與好友系列</b></td><td data-label="地點">東京迪士尼海洋 園內</td><td class="c" data-label="日期">12/18</td><td class="c" data-label="時段">白天</td><td data-label="備註"><b>海洋限定</b>，新宿旗艦店不賣，當天沒買就沒了</td></tr>
-          <tr><td data-label="品項">迪士尼商品（非海洋限定）</td><td data-label="地點">Disney FLAGSHIP TOKYO（新宿三丁目）</td><td class="c" data-label="日期">12/18</td><td class="c" data-label="時段">18:00–19:30</td><td data-label="備註">B1–2F 三層，B1 為 Marvel 區</td></tr>
-          <tr><td data-label="品項">電器</td><td data-label="地點">BIC CAMERA 新宿東口店</td><td class="c" data-label="日期">12/18</td><td class="c" data-label="時段">19:35–20:35</td><td data-label="備註">注意日本 100V 與插頭、行李箱容量；免稅帶護照</td></tr>
-          <tr><td data-label="品項">藥妝、DHC 保健食品</td><td data-label="地點">唐吉訶德 歌舞伎町店</td><td class="c" data-label="日期">12/18 · 12/21</td><td class="c" data-label="時段">夜間 · 07:50</td><td data-label="備註">24 小時；免稅需單店同日滿 ¥5,000</td></tr>
-          <tr><td data-label="品項">文具</td><td data-label="地點">銀座 伊東屋 本店</td><td class="c" data-label="日期">12/19</td><td class="c" data-label="時段">12:50–14:50</td><td data-label="備註">沒買完可在 12/20 京王百貨 5F 伊東屋新宿店補</td></tr>
-          <tr><td data-label="品項">生活雜貨、美妝</td><td data-label="地點">銀座 LOFT</td><td class="c" data-label="日期">12/19</td><td class="c" data-label="時段">15:05–16:25</td><td data-label="備註">5F 文具與伊東屋重疊度高</td></tr>
-          <tr><td data-label="品項"><b>艾許奶油 ÉCHIRÉ</b></td><td data-label="地點">L&#39;Atelier du Beurre（麻布台之丘）</td><td class="c" data-label="日期">12/19</td><td class="c" data-label="時段">16:55–17:45</td><td data-label="備註">現烤品不耐壓，用折疊袋單獨拎，不要進背包</td></tr>
-          <tr><td data-label="品項">剪紙御朱印</td><td data-label="地點">萬年山 法輪寺（早稻田）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">09:00–09:45</td><td data-label="備註">受付 9:00 起；人氣款常售完，出發前看官方 IG</td></tr>
-          <tr><td data-label="品項">御朱印</td><td data-label="地點">明治神宮 神樂殿旁長殿</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">10:50–12:00</td><td data-label="備註">9:00 起受理</td></tr>
-          <tr><td data-label="品項">HIGUMA Doughnuts 甜甜圈</td><td data-label="地點">HIGUMA Doughnuts × Coffee Wrights 表參道（神宮前 4-9-13 皆川 Village）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">13:30–14:10</td><td data-label="備註">11:00–18:00 售完為止、週三公休；現炸，當天吃，不適合帶回台灣</td></tr>
-          <tr><td data-label="品項">毛巾</td><td data-label="地點">育てるタオル 表參道 showroom</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">14:20–14:45</td><td data-label="備註">直營店品項最齊；備案為伊勢丹新宿本館 5F 專櫃</td></tr>
-          <tr><td data-label="品項">伊良可樂 糖漿</td><td data-label="地點">伊良可樂 澀谷神宮前（Cat Street）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">14:55–15:25</td><td data-label="備註"><b>只收電子支付，不收現金</b></td></tr>
-          <tr><td data-label="品項">藍瓶咖啡 商品（咖啡豆、濾掛、周邊）</td><td data-label="地點">Blue Bottle Coffee 澀谷（神南 1-7-3，北谷公園內）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">15:45–16:45</td><td data-label="備註">8:00–20:00、全年無休；這家有司康，行程上本來就是坐下來休息的點</td></tr>
-          <tr><td data-label="品項">鞋類（ASICS／HOKA）</td><td data-label="地點">澀谷門市</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">16:45–17:30</td><td data-label="備註">快閃各 10–15 分</td></tr>
-          <tr><td data-label="品項"><b>NY Perfect Cheese</b></td><td data-label="地點">京王百貨店 新宿店 1F（西口）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">17:50–18:25</td><td data-label="備註">與 YOKU MOKU、Yonex 同一棟，一次收齊；週日 20:00 打烊</td></tr>
-          <tr><td data-label="品項"><b>YOKU MOKU</b></td><td data-label="地點">京王百貨店 新宿店（西口）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">17:50–18:25</td><td data-label="備註">擇一。若 12/19 在銀座買，改去松屋銀座（銀座 3-6-1）或銀座三越（銀座 4-6-16），兩家皆到 20:00</td></tr>
-          <tr><td data-label="品項">Yonex</td><td data-label="地點">京王百貨店 新宿店 5F（西口）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">17:50–18:25</td><td data-label="備註">快閃 10 分</td></tr>
-          <tr><td data-label="品項"><b>Aesop</b></td><td data-label="地點">NEWoMan 新宿 1F（新南口）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">18:35–18:55</td><td data-label="備註"><b>週日 11:00–20:00</b>（平日與週六到 20:30），比 LUMINE 早一小時關，所以排在京王之後。液體類記得走托運<span class="tag ok">官網已查證</span></td></tr>
-          <tr><td data-label="品項">東京牛奶起司工房</td><td data-label="地點">LUMINE 新宿 B2（南口）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">19:00–19:25</td><td data-label="備註">購物樓層 11:00–21:00</td></tr>
-          <tr><td data-label="品項">Aiam 香水</td><td data-label="地點">LUMINE EST B1（東口）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">19:30–19:55</td><td data-label="備註">週日 10:30–21:00</td></tr>
-          <tr><td data-label="品項"><b>SNOOPY</b></td><td data-label="地點">SNOOPY TOWN Shop（KIDDY LAND 新宿店 4F）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">20:00–20:25</td><td data-label="備註">直接搭電梯上 4F，不要一層層逛；<b>20:30 打烊，只剩 5 分餘裕</b></td></tr>
-          <tr><td data-label="品項"><b>咖啡牛奶布丁</b></td><td data-label="地點">無印良品 新宿通り 1F 食品</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">20:30–21:00</td><td data-label="備註">215g／¥250，常溫、賞味期限 105 天，可直接托運；<b>排到剛好 21:00 關門</b></td></tr>
-          <tr><td data-label="品項">鞋類收尾（ASICS／HOKA／Yonex）</td><td data-label="地點">Alpen TOKYO（新宿 3-23-7 ユニカビル 3F–5F）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">21:05–21:30</td><td data-label="備註">三個品牌同一棟；週日 10:00–22:00</td></tr>
-          <tr><td data-label="品項"><b>Sugar Butter Tree</b></td><td data-label="地點">イイトルミネ（JR 新宿站 B1 <b>改札內</b>）</td><td class="c" data-label="日期">12/20</td><td class="c" data-label="時段">21:40–21:55</td><td data-label="備註"><b>要用 Suica 感應進站才買得到</b>（¥140／人、限 2 小時）。營業到 22:00。<b>沒買到就在機場補</b>：成田 T1 南翼 3F 管制區 Fa-So-La TAX FREE AKIHABARA（07:30–22:00），但只有國際線限定版抹茶口味 ¥1,450，不是經典款<span class="tag ok">官網已查證</span></td></tr>
-          <tr><td data-label="品項">免稅與機場伴手禮</td><td data-label="地點">成田 T1 南翼 管制區</td><td class="c" data-label="日期">12/21</td><td class="c" data-label="時段">12:00–13:20</td><td data-label="備註">退稅封條不要拆，出境審查前可能抽查</td></tr>
+          <tr><td data-label="品項">迪士尼園內商品</td><td data-label="地點／樓層">東京迪士尼樂園</td><td data-label="時間">12/17 下午</td><td data-label="備註">—</td></tr>
+          <tr><td data-label="品項"><b>達菲與好友系列</b></td><td data-label="地點／樓層">東京迪士尼海洋</td><td data-label="時間"><b>12/18 白天</b></td><td data-label="備註"><b>海洋限定</b>，新宿旗艦店不賣，當天沒買就沒了</td></tr>
+          <tr><td data-label="品項">迪士尼商品（Marvel 在 B1）</td><td data-label="地點／樓層">Disney FLAGSHIP TOKYO</td><td data-label="時間">12/18 18:10</td><td data-label="備註">方案 B 有完整 90 分</td></tr>
+          <tr><td data-label="品項">電器、家電</td><td data-label="地點／樓層">BIC CAMERA 新宿東口店</td><td data-label="時間">12/18 19:45</td><td data-label="備註">10:00–22:00　·　注意 100V 電壓與行李箱空間</td></tr>
+          <tr><td data-label="品項">DHC、藥妝、零食</td><td data-label="地點／樓層">唐吉訶德 歌舞伎町店（24H）</td><td data-label="時間">12/18 20:50 起，12/20 23:25、12/21 07:50 可補</td><td data-label="備註">免稅帶護照，單店同日滿 ¥5,000</td></tr>
+          <tr><td data-label="品項">小網神社 御守</td><td data-label="地點／樓層">日本橋小網町</td><td data-label="時間">12/19 09:50</td><td data-label="備註">授與所約到 17:00　·　<b>記得帶五色錢</b></td></tr>
+          <tr><td data-label="品項">文具、紙材</td><td data-label="地點／樓層">銀座 伊東屋 本店</td><td data-label="時間">12/19 12:50</td><td data-label="備註">120 分，主要樓層走得完</td></tr>
+          <tr><td data-label="品項">生活雜貨、美妝</td><td data-label="地點／樓層">銀座 LOFT（Bellevia 館）</td><td data-label="時間">12/19 15:05</td><td data-label="備註">文具與伊東屋重疊，重心放雜貨</td></tr>
+          <tr><td data-label="品項"><b>艾許奶油</b>（工房限定烤菓子、現烤維也納麵包）</td><td data-label="地點／樓層">麻布台之丘 Garden Plaza B 1F</td><td data-label="時間">12/19 16:55</td><td data-label="備註">19:00 關門　·　不耐壓，單獨拎</td></tr>
+          <tr><td data-label="品項">法輪寺 剪紙御朱印</td><td data-label="地點／樓層">早稻田 法輪寺</td><td data-label="時間">12/20 09:00</td><td data-label="備註">人氣款常售完，前一週看官方 Instagram</td></tr>
+          <tr><td data-label="品項">明治神宮 御朱印</td><td data-label="地點／樓層">神樂殿旁 長殿</td><td data-label="時間">12/20 10:50</td><td data-label="備註">9:00 起受理</td></tr>
+          <tr><td data-label="品項">毛巾</td><td data-label="地點／樓層">育てるタオル 表參道 showroom</td><td data-label="時間">12/20 14:20</td><td data-label="備註">直營店品項最齊　·　備案：伊勢丹新宿 5F</td></tr>
+          <tr><td data-label="品項">伊良可樂 糖漿</td><td data-label="地點／樓層">伊良コーラ 澀谷神宮前</td><td data-label="時間">12/20 14:55</td><td data-label="備註"><b>只收電子支付</b></td></tr>
+          <tr><td data-label="品項">NY Perfect Cheese</td><td data-label="地點／樓層">京王百貨新宿店 <b>1F</b></td><td data-label="時間">12/20 17:50</td><td data-label="備註">百貨 20:00 打烊，三項一次收完</td></tr>
+          <tr><td data-label="品項"><b>YOKU MOKU</b></td><td data-label="地點／樓層">京王百貨新宿店</td><td data-label="時間">12/20 17:50</td><td data-label="備註">與上同</td></tr>
+          <tr><td data-label="品項">Yonex（鞋子彈性）</td><td data-label="地點／樓層">京王百貨新宿店 <b>5F</b></td><td data-label="時間">12/20 17:50</td><td data-label="備註">與上同</td></tr>
+          <tr><td data-label="品項"><b>SNOOPY 周邊</b></td><td data-label="地點／樓層">KIDDY LAND 新宿店 <b>4F</b></td><td data-label="時間">12/20 20:00</td><td data-label="備註">SNOOPY TOWN Shop 在 4 樓，直接搭電梯</td></tr>
+          <tr><td data-label="品項"><b>咖啡牛奶布丁</b> ¥250／215g</td><td data-label="地點／樓層">無印良品 新宿通り <b>1F</b></td><td data-label="時間">12/20 20:30</td><td data-label="備註">常溫 105 天可帶回台灣　·　<b>買幾盒當天決定</b></td></tr>
+          <tr><td data-label="品項"><b>Sugar Butter Tree</b></td><td data-label="地點／樓層"><b>JR 新宿站 改札內</b>（Suica 感應進站，約 ¥140／人）</td><td data-label="時間">12/20 21:40</td><td data-label="備註">沒買到就在成田 T1 補，但那是<b>國際線限定抹茶口味</b></td></tr>
+          <tr><td data-label="品項">Aiam 香水</td><td data-label="地點／樓層">LUMINE EST <b>B1</b>（東口）</td><td data-label="時間">12/20 19:30</td><td data-label="備註">—</td></tr>
+          <tr><td data-label="品項">東京牛奶起司工房</td><td data-label="地點／樓層">LUMINE <b>B2</b>（南口）</td><td data-label="時間">12/20 19:05</td><td data-label="備註">—</td></tr>
+          <tr><td data-label="品項">Aēsop</td><td data-label="地點／樓層">Aēsop Shinjuku（新宿 3-36-5，東口北側）</td><td data-label="時間">12/20 18:35</td><td data-label="備註">11:00–20:30 全年無休</td></tr>
+          <tr><td data-label="品項">ASICS／HOKA／Rig footer</td><td data-label="地點／樓層">澀谷各店、Alpen TOKYO 21:05</td><td data-label="時間">12/20 下午與晚上</td><td data-label="備註">快閃 10–15 分，沒喜歡就走</td></tr>
+          <tr><td data-label="品項">機場免稅、最後補貨</td><td data-label="地點／樓層">成田 T1 南翼管制區</td><td data-label="時間">12/21 12:00</td><td data-label="備註">有 80 分鐘</td></tr>
         </tbody>
       </table>
     </div>
-    <p>這趟碰不到的採買點：東京車站的伴手禮樓層。12/19 晚上 21:10 才到東京站，改札外的大丸東京（到 20:00）與東京ギフトパレット（週六 9:00–20:30）都已打烊，而 Sugar Butter Tree、東京牛奶起司工房、NY Perfect Cheese 的東京站店位在 JR 改札內的グランスタ東京，當天搭的是地鐵丸之內線、不進 JR 改札。12/21 從新宿直接搭 N&#39;EX，也不經過東京站。</p>
+    <p><b>兩個容易漏的：</b>①「達菲與好友」是迪士尼海洋限定，12/18 白天沒買，新宿旗艦店補不到。② 艾許的烘焙品與無印布丁都怕壓，出門帶一個折疊提袋單獨裝。</p>
   </section>
 
-  <!-- ================= 公休一覽 ================= -->
+  <section class="block" id="prep">
+    <h2>行前準備清單</h2>
+    <p>出發前照這幾張表跑一遍就不會漏。急迫度標「高」的是漏掉會直接影響行程的。</p>
+      <h3 style="font-size:1rem;margin-top:1.2rem">A. 要先訂、先買的</h3>
+      <div class="scroller"><table>
+        <thead><tr><th>項目</th><th>何時</th><th>怎麼做</th><th>急迫度</th></tr></thead>
+        <tbody>
+          <tr><td data-label="項目"><b>迪士尼門票</b></td><td data-label="何時">12/17 抵達飯店時</td><td data-label="怎麼做">樂園大飯店 3F Reception，6:00–22:00，<b>兩天四張一次買齊</b>，可掛房帳。官方保證住客買得到、不會售罄，<b>不用線上先買</b></td><td data-label="急迫度">不用提前</td></tr>
+          <tr><td data-label="項目"><b>野田岩 訂位</b></td><td data-label="何時">出發前</td><td data-label="怎麼做">12/19 週六晚 19:05，L.O. 20:00。週六晚不訂幾乎進不去</td><td data-label="急迫度"><b>高</b></td></tr>
+          <tr><td data-label="項目">N&#39;EX 劃位</td><td data-label="何時">前一天</td><td data-label="怎麼做">12/21 <b>新宿站發</b>，每小時 1–2 班、車程 84–95 分。整趟唯一沒有緩衝的一段</td><td data-label="急迫度"><b>高</b></td></tr>
+          <tr><td data-label="項目">高速巴士 新宿–TDR</td><td data-label="何時">不能預約</td><td data-label="怎麼做">12/18，先到先上車。提早 15–20 分到乘車處排隊，最壞等下一班（班距 30–40 分）</td><td data-label="急迫度">當天處理</td></tr>
+          <tr><td data-label="項目">成田→迪士尼 利木津巴士</td><td data-label="何時"><b>不要預訂</b></td><td data-label="怎麼做">12/17，¥2,900／人。班距 1 小時 1–2 班，<b>2026/10/1 已改點</b>，出發前重查官網。出關後在 1F 櫃台買下一班，第 1 航廈 10 號乘車處</td><td data-label="急迫度">出發前查</td></tr>
+          <tr><td data-label="項目">法輪寺 御朱印</td><td data-label="何時">出發前一週</td><td data-label="怎麼做">看官方 Instagram 的受付日與限量品公告</td><td data-label="急迫度">中</td></tr>
+          <tr><td data-label="項目">迪士尼旗艦店</td><td data-label="何時">出發前</td><td data-label="怎麼做">先在官網把想買的品項與樓層看過一輪，12/18 有 90 分</td><td data-label="急迫度">中</td></tr>
+        </tbody>
+      </table></div>
+      <h3 style="font-size:1rem;margin-top:1.4rem">B. 證件與支付</h3>
+      <ul>
+        <li><b>護照</b>——免稅一定要帶，單店同日消費滿 ¥5,000 才適用。退稅商品的封條在出境前不要拆，出境審查前會抽查，放手提行李方便拿出</li>
+        <li><b>Suica／PASMO</b>——先儲值足夠。行程裡的車資都是概估，以當日查詢為準</li>
+        <li><b>信用卡／行動支付</b>——<b>伊良可樂只收電子支付，不收現金</b>；Bic Camera 免稅之外通常還能疊折價券</li>
+        <li><b>現金</b>——小網神社的<b>五色錢</b>、神社授與所、部分老舖仍以現金為主</li>
+        <li><b>入境相關線上手續</b>（Visit Japan Web 之類）<span class="tag unk">2026 年的現行規定我沒查證，出發前請看外交部或日本官方公告</span></li>
+      </ul>
+      <h3 style="font-size:1rem;margin-top:1.4rem">C. 行李與裝備</h3>
+      <ul>
+        <li><b>折疊提袋一個</b>——艾許的烘焙品與無印布丁都怕壓，要跟文具、雜貨分開裝</li>
+        <li><b>行李空間預留</b>——無印布丁 215g／盒，買幾盒先算重量；Bic 的電器體積大，注意日本 100V 電壓與插頭</li>
+        <li><b>厚外套、手套、圍巾</b>——12 月東京日均高溫約 12°C、低溫 4–5°C，<b>日落約 16:30</b>。東京鐵塔夜拍（12/19 18:05）與丸之內燈飾都在戶外，塔下開闊處風很大</li>
+        <li><b>好走的鞋</b>——12/19 步行量高、12/20 很高（法輪寺、明治神宮、表參道到澀谷全程步行）</li>
+        <li><b>折傘</b>——12 月東京降雨少，但 12/20 戶外比例最高，各日的雨天備案寫在該日面板裡</li>
+        <li><b>行動電源</b>——整天用手機導航加拍照</li>
+        <li>液體與指甲剪類放托運；12/20 晚上先把托運行李收好，隔天早上才不會手忙腳亂</li>
+      </ul>
+      <h3 style="font-size:1rem;margin-top:1.4rem">D. 要先裝的 App</h3>
+      <ul>
+        <li><b>東京迪士尼度假區 App</b>——行動點餐、等候時間、<b>遊行與煙火的臨時取消公告</b>。12/17 建議 18:00 就先用它點好晚餐</li>
+        <li><b>Google Maps</b>——松輪已搬家、育てるタオル 藏在小巷，都要靠導航。可先下載離線地圖</li>
+        <li><b>轉乘查詢</b>——行程裡的班次時間是概估，當天以實際為準</li>
+      </ul>
+      <h3 style="font-size:1rem;margin-top:1.4rem">E. 最容易走錯、買錯的六件事</h3>
+      <ul>
+        <li><b>京ばし松輪已搬到銀座 1-15-6</b>，不在京橋站旁了。店名還叫「京ばし」</li>
+        <li><b>達菲與好友是迪士尼海洋限定</b>，新宿旗艦店不賣，12/18 白天沒買就補不到</li>
+        <li><b>SNOOPY TOWN Shop 在 KIDDY LAND 新宿店 4 樓</b>，直接搭電梯，不要一層一層逛</li>
+        <li><b>成田第一航廈對應的是「成田空港」站</b>，不要在「空港第 2 大樓」站下車。長榮在<b>第一航廈南翼</b></li>
+        <li><b>東京站的京葉線月台在地下最深處</b>，12/18 若改走電車備案，走到中央線月台要 10–15 分</li>
+        <li><b>伊良可樂只收電子支付</b>，帶現金也付不了</li>
+      </ul>
+    </section>
+
+  <section class="block" id="confirm">
+    <h2>行前確認</h2>
+    <p>出發前要逐項打勾的清單。分成「已定案」與「還沒決定」兩段，已定案的不用再想，還沒決定的要在指定的時間點做選擇。</p>
+
+    <h3 style="font-size:1rem;margin-top:1.2rem">已定案（不再變動）</h3>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>項目</th><th>決定</th></tr></thead>
+        <tbody>
+          <tr><td data-label="項目">12/18 離園時間</td><td data-label="決定"><b>15:20 離園、16:20 巴士</b>（原方案 B）。17:00 離園的版本留成備案 A</td></tr>
+          <tr><td data-label="項目">Gendy（銀座）</td><td data-label="決定"><b>整站拿掉</b>，讓出的時間給伊東屋</td></tr>
+          <tr><td data-label="項目">東京鐵塔</td><td data-label="決定"><b>不登塔</b>，只在塔下取景</td></tr>
+          <tr><td data-label="項目">澀谷 Sky</td><td data-label="決定"><b>不去</b></td></tr>
+          <tr><td data-label="項目">東京車站伴手禮樓層</td><td data-label="決定"><b>不去</b>（這一版的動線碰不到）</td></tr>
+          <tr><td data-label="項目">鰻魚飯</td><td data-label="決定">選<b>野田岩</b>；つきじ宮川本廛與いづも 不去</td></tr>
+          <tr><td data-label="項目">炸豬排飯</td><td data-label="決定"><b>不排</b>（虎之門嚆矢週六休；丸七銀座店午晚餐都撞既有店）</td></tr>
+          <tr><td data-label="項目">鞋子類</td><td data-label="決定">快閃估法，每家 10–15 分</td></tr>
+          <tr><td data-label="項目">無印布丁</td><td data-label="決定"><b>買幾盒不預先決定</b>，當天看行李空間</td></tr>
+          <tr><td data-label="項目">京ばし松輪 地址</td><td data-label="決定"><b>銀座 1-15-6</b>，已不在京橋</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:1rem;margin-top:1.4rem">出發前一週要重查的時刻表</h3>
+    <p>東京 Metro 與 JR 山手線、中央線快速離峰班距都在 3–8 分，行程裡的緩衝已經涵蓋，<b>不需要逐班對時</b>。真正要查的是下面這幾種低班次交通。</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>交通</th><th>班距／狀況</th><th>要確認什麼</th></tr></thead>
+        <tbody>
+          <tr><td data-label="交通"><b>利木津巴士 成田→TDR</b>（12/17）</td><td data-label="班距／狀況">1 小時 1–2 班</td><td data-label="要確認什麼"><b>2026/10/1 已改點</b>，現行時刻已不適用。出關後現場買下一班，不要預訂</td></tr>
+          <tr><td data-label="交通"><b>高速巴士 新宿–TDR</b>（12/18）</td><td data-label="班距／狀況">約 30–40 分 1 班</td><td data-label="要確認什麼">已查證（2025/06/01 改點版）。不能預約，提早 15–20 分排隊</td></tr>
+          <tr><td data-label="交通">迪士尼度假區線</td><td data-label="班距／狀況">4–13 分，繞一圈 13 分</td><td data-label="要確認什麼">已查證。Gateway→海洋約 9 分、海洋→Gateway 約 3 分</td></tr>
+          <tr><td data-label="交通"><b>N&#39;EX</b>（12/21）</td><td data-label="班距／狀況">每小時 1–2 班，車程 84–95 分</td><td data-label="要確認什麼"><b>整趟唯一沒有緩衝的一段。</b>2026/12 的時刻現在查不到，出發前一週務必重查並劃位</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:1rem;margin-top:1.4rem">還沒決定</h3>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>要決定的事</th><th>什麼時候決定</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td data-label="要決定的事"><b>住新宿還是住銀座</b></td><td data-label="什麼時候決定">訂房前</td><td data-label="說明">另有一份銀座住宿的行程表</td></tr>
+          <tr><td data-label="要決定的事"><b>YOKU MOKU 買京王還是銀座</b></td><td data-label="什麼時候決定"><b>12/19 離開銀座 LOFT 時（16:25）</b></td><td data-label="說明">在銀座買就當場買完，12/20 的京王那站就只拿 NY Perfect Cheese 與 Yonex</td></tr>
+          <tr><td data-label="要決定的事">12/21 早餐</td><td data-label="什麼時候決定">當天</td><td data-label="說明">超商快速解決，或留到成田的 Tokyo Food Bar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <section class="block" id="closures">
     <h2>公休與營業時間一覽</h2>
     <p>✔ 表示已從官方或可靠來源查證；⚠ 表示我沒查到可靠資料，請出發前自行確認。</p>
@@ -1344,99 +1331,41 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);color:v
           </tr>
         </thead>
         <tbody>
-          <tr><td data-label="地點">東京迪士尼樂園</td><td data-label="營業時間">9:00–21:00　¥10,900</td><td data-label="公休">無</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">東京迪士尼海洋</td><td data-label="營業時間">9:00–21:00　¥10,900</td><td data-label="公休">無</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">高速巴士 新宿–TDR 線</td><td data-label="營業時間">樂園發 16:20/17:20/17:50/18:20/18:55/19:20</td><td data-label="公休">—　¥1,000/人</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">伊勢丹新宿 本館 B1「旨の膳」</td><td data-label="營業時間">10:00–20:00（崎陽軒櫃位）</td><td data-label="公休">依百貨</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">育てるタオル 表參道 showroom</td><td data-label="營業時間">11:00–19:00</td><td data-label="公休">全年無休</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">KIDDY LAND 新宿店</td><td data-label="營業時間">10:30–20:30</td><td data-label="公休">無特定公休</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">Aesop ニュウマン新宿</td><td data-label="營業時間">月～土 11:00–20:30／<b>日祝 11:00–20:00</b></td><td data-label="公休">依館方</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">イイトルミネ（Sugar Butter Tree）</td><td data-label="營業時間">08:00–22:00　<b>JR 改札內</b></td><td data-label="公休">依館方</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">無印良品 新宿通り</td><td data-label="營業時間">10:00–21:00</td><td data-label="公休">—</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">BIC CAMERA 新宿東口店</td><td data-label="營業時間">10:00–22:00</td><td data-label="公休">年中無休</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">Disney FLAGSHIP TOKYO</td><td data-label="營業時間">10:00–21:00</td><td data-label="公休">未標示</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">京ばし松輪（銀座1-15-6）</td><td data-label="營業時間">11:30–14:00／17:00–23:00</td><td data-label="公休">週日</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">✕</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">銀座 伊東屋 本店</td><td data-label="營業時間">平日 10–20／日祝 10–19</td><td data-label="公休">無</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">銀座 LOFT</td><td data-label="營業時間">11–21／日 11–20</td><td data-label="公休">不定休（依館方）</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">艾許奶油 麻布台店</td><td data-label="營業時間">11:00–19:00</td><td data-label="公休">12/31–1/3，其餘依館方</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">野田岩 麻布飯倉本店</td><td data-label="營業時間">11–14:30／17–21（L.O.20:00）</td><td data-label="公休">週日、土用丑日、部分週一</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">✕</td><td class="c" data-label="21一">△</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">法輪寺（早稻田）</td><td data-label="營業時間">開門 7:30–16:30／御朱印 9:00–12:30、13:00–16:00</td><td data-label="公休">無</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">明治神宮</td><td data-label="營業時間">12 月約 6:40–16:00</td><td data-label="公休">無</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">HIGUMA Doughnuts 表參道</td><td data-label="營業時間">11:00–18:00 售完止</td><td data-label="公休">週三</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">伊良可樂 澀谷神宮前</td><td data-label="營業時間">13:00–19:00（僅電子支付）</td><td data-label="公休">無（年末年始除外）</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">丸之內燈飾</td><td data-label="營業時間">約 16:00/17:00–24:00</td><td data-label="公休">期間 11/12–12/25</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">小網神社 授與所</td><td data-label="營業時間">約 9:00–17:00</td><td data-label="公休">—</td><td class="c" data-label="17四">?</td><td class="c" data-label="18五">?</td><td class="c" data-label="19六">?</td><td class="c" data-label="20日">?</td><td class="c" data-label="21一">?</td><td data-label="查證">⚠</td></tr>
-          <tr><td data-label="地點">Alpen TOKYO</td><td data-label="營業時間">平日 11:00–22:00／六日祝 10:00–22:00</td><td data-label="公休">未標示</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">京王百貨店 新宿店</td><td data-label="營業時間">B1–2F 平日 10:00–20:30／日祝 10:00–20:00　·　3F 以上 10:00–20:00</td><td data-label="公休">依百貨</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">LUMINE EST 新宿</td><td data-label="營業時間">購物 平日 11:00–21:00／日祝 10:30–21:00</td><td data-label="公休">依館方</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">LUMINE 新宿（南口）</td><td data-label="營業時間">購物 11:00–21:00（平日與假日相同）</td><td data-label="公休">依館方</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">藍瓶咖啡 澀谷</td><td data-label="營業時間">8:00–20:00</td><td data-label="公休">無（全年無休）</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
-          <tr><td data-label="地點">東京鐵塔 大展望台</td><td data-label="營業時間">不登塔，僅塔下取景</td><td data-label="公休">—</td><td class="c" data-label="17四">—</td><td class="c" data-label="18五">—</td><td class="c" data-label="19六">—</td><td class="c" data-label="20日">—</td><td class="c" data-label="21一">—</td><td data-label="查證">—</td></tr>
+          <tr><td data-label="地點">東京迪士尼樂園</td><td data-label="營業時間">9:00–21:00　¥10,900</td><td data-label="公休">無</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">東京迪士尼海洋</td><td data-label="營業時間">9:00–21:00　¥10,900</td><td data-label="公休">無</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">高速巴士 新宿–TDR 線</td><td data-label="營業時間">樂園發 16:20/17:20/17:50/18:20/18:55/19:20</td><td data-label="公休">—　¥1,000/人</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">伊勢丹新宿 本館 B1「旨の膳」</td><td data-label="營業時間">10:00–20:00（崎陽軒櫃位）</td><td data-label="公休">依百貨</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">育てるタオル 表參道 showroom</td><td data-label="營業時間">11:00–19:00</td><td data-label="公休">全年無休</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">Aēsop Shinjuku</td><td data-label="營業時間">11:00–20:30</td><td data-label="公休">全年無休</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
+          <tr><td data-label="地點">KIDDY LAND 新宿店</td><td data-label="營業時間">10:30–20:30</td><td data-label="公休">無特定公休</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">イイトルミネ（Sugar Butter Tree）</td><td data-label="營業時間">—</td><td data-label="公休">—</td><td class="c" data-label="查證">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td data-label="">⚠</td></tr>
+          <tr><td data-label="地點">無印良品 新宿通り</td><td data-label="營業時間">10:00–21:00</td><td data-label="公休">—</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">BIC CAMERA 新宿東口店</td><td data-label="營業時間">10:00–22:00</td><td data-label="公休">年中無休</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">Disney FLAGSHIP TOKYO</td><td data-label="營業時間">10:00–21:00</td><td data-label="公休">未標示</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">京ばし松輪（銀座1-15-6）</td><td data-label="營業時間">11:30–14:00／17:00–23:00</td><td data-label="公休">週日</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">✕</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">銀座 伊東屋 本店</td><td data-label="營業時間">平日 10–20／日祝 10–19</td><td data-label="公休">無</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">銀座 LOFT</td><td data-label="營業時間">11–21／日 11–20</td><td data-label="公休">不定休（依館方）</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">艾許奶油 麻布台店</td><td data-label="營業時間">11:00–19:00</td><td data-label="公休">12/31–1/3，其餘依館方</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">野田岩 麻布飯倉本店</td><td data-label="營業時間">11–14:30／17–21（L.O.20:00）</td><td data-label="公休">週日、土用丑日、部分週一</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">✕</td><td class="c" data-label="">△</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">法輪寺（早稻田）</td><td data-label="營業時間">開門 7:30–16:30／御朱印 9:00–12:30、13:00–16:00</td><td data-label="公休">無</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">明治神宮</td><td data-label="營業時間">12 月約 6:40–16:00</td><td data-label="公休">無</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">HIGUMA Doughnuts 表參道</td><td data-label="營業時間">11:00–18:00 售完止</td><td data-label="公休">週三</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">伊良可樂 澀谷神宮前</td><td data-label="營業時間">13:00–19:00（僅電子支付）</td><td data-label="公休">無（年末年始除外）</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">丸之內燈飾</td><td data-label="營業時間">約 16:00/17:00–24:00</td><td data-label="公休">期間 11/12–12/25</td><td class="c" data-label="查證">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td class="c" data-label="">○</td><td data-label="">✔</td></tr>
+          <tr><td data-label="地點">小網神社 授與所</td><td data-label="營業時間">約 9:00–17:00</td><td data-label="公休">—</td><td class="c" data-label="查證">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td data-label="">⚠</td></tr>
+          <tr><td data-label="地點">Alpen TOKYO</td><td data-label="營業時間">—</td><td data-label="公休">—</td><td class="c" data-label="查證">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td data-label="">⚠</td></tr>
+          <tr><td data-label="地點">京王百貨新宿店／LUMINE</td><td data-label="營業時間">—</td><td data-label="公休">—</td><td class="c" data-label="查證">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td class="c" data-label="">?</td><td data-label="">⚠</td></tr>
+          <tr><td data-label="地點">Blue Bottle Coffee 澀谷</td><td data-label="營業時間">8:00–20:00</td><td data-label="公休">全年無休</td><td class="c" data-label="17四">○</td><td class="c" data-label="18五">○</td><td class="c" data-label="19六">○</td><td class="c" data-label="20日">○</td><td class="c" data-label="21一">○</td><td data-label="查證">✔</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- ================= 待決定 ================= -->
-  <section class="block" id="extra">
-    <h2>還沒決定的事</h2>
-    <ul>
-      <li><b>YOKU MOKU 在銀座買還是新宿買 — 當天再決定。</b>決策點在 12/19 下午離開銀座 LOFT 時（16:25），那一格有醒目提示。銀座是松屋或三越、新宿是 12/20 的京王店，擇一。</li>
-    </ul>
-    <p><b>確定不排的：</b>澀谷 Sky、炸豬排飯（虎之門 嚆矢週六公休；丸七銀座店午餐 15:00 收、晚餐 20:00 收，12/19 兩餐都已經有店）、つきじ宮川本廛與いづも（鰻魚飯已選野田岩）、東京車站伴手禮樓層（動線碰不到，說明在伴手禮清單末）。</p>
-  </section>
-
-  <!-- ================= 行前確認 ================= -->
-  <section class="block" id="check">
-    <h2>行前要確認的事</h2>
-    <p>要動手做的事集中在這裡。上半是要先訂、先買的，下半是出發前一週要再查一次的。</p>
-
-    <h3 style="font-size:1rem;margin:1.2rem 0 .4rem">一、要先訂位、劃位、購票</h3>
-    <div class="scroller">
-      <table>
-        <thead><tr><th>項目</th><th>要做什麼</th><th class="c">期限</th></tr></thead>
-        <tbody>
-          <tr><td data-label="項目"><b>N&#39;EX 新宿 → 成田</b></td><td data-label="要做什麼">查 12/21 早上班次並<b>劃位</b>。新宿發車班次不密，部分時段每小時只有 1 班。<b>這是整趟唯一沒有緩衝的一段。</b></td><td class="c" data-label="期限">出發前<br>（最晚前一天）</td></tr>
-          <tr><td data-label="項目"><b>野田岩 麻布飯倉本店</b></td><td data-label="要做什麼">訂位：12/19（六）19:05、2 位。L.O. 20:00，週六晚間不訂容易撲空。</td><td class="c" data-label="期限">出發前 2 週</td></tr>
-          <tr><td data-label="項目"><b>迪士尼門票</b></td><td data-label="要做什麼">不用線上先買——住樂園大飯店，官方保證住客買得到、兩園都能選。但<b>12/17 抵達當天就要在 3F Reception 把兩天四張一次買完</b>，別留到 12/18 早上。</td><td class="c" data-label="期限">12/17 當天<br>15:00 Check-in 時</td></tr>
-          <tr><td data-label="項目">成田 → 迪士尼 利木津巴士</td><td data-label="要做什麼">可線上先買，也可現場買。想保險就先買 13:30–14:00 的班次。</td><td class="c" data-label="期限">出發前</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 style="font-size:1rem;margin:1.6rem 0 .4rem">二、出發前一週要再查一次</h3>
-    <div class="scroller">
-      <table>
-        <thead><tr><th>項目</th><th>要確認什麼</th><th class="c">查哪裡</th></tr></thead>
-        <tbody>
-          <tr><td data-label="項目"><b>法輪寺 剪紙御朱印</b></td><td data-label="要確認什麼">當月受付日與限量品項，人氣款常售完。</td><td class="c" data-label="查哪裡">官方 Instagram</td></tr>
-          <tr><td data-label="項目"><b>明治神宮 開門時間</b></td><td data-label="要確認什麼">隨日出日落調整，12 月約 6:40–16:00，確切時間每月不同。</td><td class="c" data-label="查哪裡">官網</td></tr>
-          <tr><td data-label="項目"><b>丸之內仲通 點燈時間</b></td><td data-label="要確認什麼">期間 2026/11/12–12/25 已確認；「12 月延長至 24:00」是依往年，當年時間要再看。</td><td class="c" data-label="查哪裡">官網</td></tr>
-          <tr><td data-label="項目"><b>小網神社 授與所</b></td><td data-label="要確認什麼">約 9:00–17:00 是旅遊紀錄，<b>不是官方公告</b>。<span class="tag unk">未查證</span></td><td class="c" data-label="查哪裡">官網或電話</td></tr>
-          <tr><td data-label="項目"><b>高速巴士 新宿–TDR</b></td><td data-label="要確認什麼">不能預約、先到先上車。確認 12/18 當日時刻有沒有改點。</td><td class="c" data-label="查哪裡">京成／JR 巴士官網</td></tr>
-          <tr><td data-label="項目"><b>迪士尼 遊行與煙火</b></td><td data-label="要確認什麼">遇雨或強風常臨時取消。</td><td class="c" data-label="查哪裡">官方 App<br>（12/17、12/18 當天早上）</td></tr>
-          <tr><td data-label="項目">年末年始營業</td><td data-label="要確認什麼">12/20–12/21 還不到年末年始，但艾許（12/31–1/3 休）等店的年末公告有時會提早貼出。</td><td class="c" data-label="查哪裡">各店官網</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ================= 行前準備 ================= -->
-  <section class="block" id="todo">
-    <h2>行前準備</h2>
-    <ul>
-      <li><b>天氣：</b>12 月東京日均高溫約 12°C、低溫 4–5°C，降雨少但風冷、日落早（約 16:30）。行程裡的夜間戶外段（東京鐵塔、丸之內燈飾）請帶厚外套與手套。</li>
-      <li><b>Suica／PASMO</b> 儲值足夠。文件裡的車資都是概估，實際以當日查詢為準。12/20 晚上若要進 JR 改札買 Sugar Butter Tree，感應進出會扣 ¥140／人。</li>
-      <li><b>五色錢</b>（小網神社錢洗場用）出發前就要放進包包，12/19 早上 09:00 出門前檢查。</li>
-      <li><b>可折疊提袋一個</b>，12/19 裝艾許的烘焙品用，不要跟文具擠。</li>
-      <li><b>護照</b>隨身——免稅都要看，唐吉訶德、BIC CAMERA、百貨都用得到。單店同日滿 ¥5,000 才適用。</li>
-      <li><b>每段交通都已抓緩衝</b>（換乘段抓車程的 1.3–1.5 倍）。唯一沒有緩衝的是 12/21 的 N&#39;EX。</li>
-      <li><b>12/18 的高速巴士不能預約</b>，先到先上車。週五傍晚人多，提早 15–20 分到乘車處排隊，最壞就是等下一班（班距 30–40 分）。</li>
-    </ul>
-  </section>
+  <!-- ================= 行前 ================= -->
+  
 
   <footer>
-    行程表最後更新：2026/09/22。營業時間與公休會變動，出發前一週請就標示 ⚠ 的項目再確認一次。車資與車程為概估值。
+    行程表最後更新：2026/09/21。營業時間與公休會變動，出發前一週請就標示 ⚠ 的項目再確認一次。車資與車程為概估值。
   </footer>
 
 </div>
